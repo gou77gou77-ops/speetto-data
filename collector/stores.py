@@ -1,7 +1,7 @@
 """전국 판매점 → stores.json (docs/data-contract.md, docs/data-source.md 5절).
 
 실행:
-    python -m collector.stores --out out/stores.json            # 전국 (약 1,448번 요청, 약 25분)
+    python -m collector.stores --out out/stores.json            # 전국 (약 1,448번 요청. 1초 간격 약 25분, 3초 간격 약 75분)
     python -m collector.stores --sido 서울 --sigungu 서초구       # 시군구 하나만 시험 → out/stores.sample.json
 
 끝까지 다 받고 형식 검사를 통과했을 때만 파일을 바꾼다. 실패하면 기존 파일을 그대로 두고 0이 아닌 값으로 끝난다.
@@ -12,19 +12,21 @@ from __future__ import annotations
 import argparse
 import math
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
 from .contract import validate_stores
-from .dhlottery import BlockedError, Client, CollectError, FormatChangedError
+from .dhlottery import BlockedError, Client, CollectError, FormatChangedError, user_agent_summary
 from .geo import valid_coord
 from .juso import Geocoder
-from .output import gh_error, gh_warning, now_kst, read_json, write_json_atomic
+from .output import elapsed, gh_error, gh_warning, log, now_kst, read_json, write_json_atomic
 
 PATH = "/prchsplcsrch/selectLtShp.do"
 PAGE_SIZE = 10  # 서버가 10으로 고정
 COMPLETE_RATIO = 0.995  # 수집 중 목록이 조금 바뀌는 것만 허용
 SHRINK_LIMIT = 0.9  # 지난 파일보다 10% 넘게 줄면 이상으로 본다
+PROGRESS_EVERY = 10  # 쪽마다 진행 로그
 PRODUCT_FLAGS = (("SP2000", "st20LtNtslYn"), ("SP1000", "st10LtNtslYn"), ("SP500", "st5LtNtslYn"))
 
 
@@ -44,17 +46,28 @@ def _page(client: Client, page: int, sido: str, sigungu: str) -> tuple[int, list
     return data["total"], data["list"]
 
 
-def fetch_all(client: Client, sido: str = "", sigungu: str = "", log=print) -> list[dict[str, Any]]:
-    total, rows = _page(client, 1, sido, sigungu)
-    pages = math.ceil(total / PAGE_SIZE)
-    log(f"판매점 total {total}, {pages}쪽")
-    for page in range(2, pages + 1):
-        _, more = _page(client, page, sido, sigungu)
-        if not more:
-            raise CollectError(f"{page}/{pages}쪽이 비어 있음. 목록이 끝까지 오지 않았다")
-        rows.extend(more)
-        if page % 100 == 0:
-            log(f"  {page}/{pages}쪽")
+def fetch_all(client: Client, sido: str = "", sigungu: str = "", log=log,
+              clock=time.monotonic) -> list[dict[str, Any]]:
+    start = clock()
+    page, pages = 1, "?"
+    try:
+        total, rows = _page(client, 1, sido, sigungu)
+        pages = math.ceil(total / PAGE_SIZE)
+        interval = getattr(client, "min_interval", 0)
+        log(f"판매점 total {total}, {pages}쪽, 요청 간격 {interval:g}초"
+            + (f", 예상 약 {math.ceil(pages * interval / 60)}분" if interval else ""))
+        for page in range(2, pages + 1):
+            _, more = _page(client, page, sido, sigungu)
+            if not more:
+                raise CollectError(f"{page}/{pages}쪽이 비어 있음. 목록이 끝까지 오지 않았다")
+            rows.extend(more)
+            if page % PROGRESS_EVERY == 0 or page == pages:
+                log(f"  {page}/{pages}쪽, 경과 {elapsed(clock() - start)}")
+    except CollectError as e:
+        where = f"{page}/{pages}쪽, {client.request_count}번째 요청, 시작 {elapsed(clock() - start)} 뒤"
+        log(f"실패 지점: {where}")
+        e.args = (f"{where}: {e.args[0] if e.args else e}",) + e.args[1:]
+        raise
     unique = {str(r.get("ltShpId")): r for r in rows if r.get("ltShpId")}
     if len(unique) < total * COMPLETE_RATIO:
         raise CollectError(f"판매점 {len(unique)}곳만 받음 (total {total}). 끝까지 받지 못했다")
@@ -129,6 +142,7 @@ def main(argv: list[str] | None = None) -> int:
         gh_warning("지오코딩 건너뜀", "JUSO_API_KEY가 없어 좌표 없는 판매점은 좌표 null로 둡니다")
 
     client = Client()
+    log(f"User-Agent: {user_agent_summary()}, 요청 간격 {client.min_interval:g}초")
     try:
         rows = fetch_all(client, args.sido, args.sigungu)
         doc = build_doc(rows, geocoder)
@@ -146,7 +160,7 @@ def main(argv: list[str] | None = None) -> int:
     write_json_atomic(out, doc)
     no_coord = sum(1 for s in doc["stores"] if s["lat"] is None)
     juso = sum(1 for s in doc["stores"] if s["coordSource"] == "juso")
-    print(f"저장: {out} — 스피또 판매점 {doc['total']}곳 (받은 판매점 {len(rows)}곳), "
+    log(f"저장: {out} — 스피또 판매점 {doc['total']}곳 (받은 판매점 {len(rows)}곳), "
           f"행안부 좌표 {juso}곳, 좌표 없음 {no_coord}곳, 요청 {client.request_count}번")
     return 0
 

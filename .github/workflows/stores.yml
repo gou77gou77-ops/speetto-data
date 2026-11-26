@@ -21,9 +21,13 @@ jobs:
   collect:
     # 저장소 Variable COLLECTOR_RUNNER에 self-hosted를 넣으면 내 PC 러너에서 돈다(docs/github-setup.md 10절)
     runs-on: ${{ vars.COLLECTOR_RUNNER || 'ubuntu-latest' }}
-    timeout-minutes: 120 # 약 1,448번 요청, 1초에 1건이면 약 25분
+    timeout-minutes: 180 # 약 1,448번 요청: 3초 간격(GitHub) 약 75분, 1초 간격(내 PC) 약 25분 + 시간 초과 재시도
     env:
-      COLLECTOR_CONTACT: ${{ vars.COLLECTOR_CONTACT }}
+      # 연락처는 Secret: 공개 로그에 *** 로만 보인다. Variable에 넣지 않는다
+      COLLECTOR_CONTACT: ${{ secrets.COLLECTOR_CONTACT }}
+      # 요청 간격(초). 비우면 GitHub 러너 3초, 내 PC 1초
+      COLLECTOR_INTERVAL: ${{ vars.COLLECTOR_INTERVAL }}
+      PYTHONUNBUFFERED: "1"
       PYTHONIOENCODING: utf-8
     steps:
       - uses: actions/checkout@v4
@@ -44,13 +48,13 @@ jobs:
 
       # 여기서 실패하면 아래 단계는 모두 건너뛰고, gh-pages의 기존 JSON은 그대로 남는다.
       - name: 동행복권 접속 확인
-        run: python -m collector.check --target stores
+        run: python -u -m collector.check --target stores
 
       - name: 전국 판매점 수집
         env:
           JUSO_API_KEY: ${{ secrets.JUSO_API_KEY }}
           JUSO_COORD_API_KEY: ${{ secrets.JUSO_COORD_API_KEY }}
-        run: python -m collector.stores --out out/stores.json
+        run: python -u -m collector.stores --out out/stores.json
 
       - name: config.json 복사
         run: cp public/config.json out/config.json

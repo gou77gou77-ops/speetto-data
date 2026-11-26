@@ -16,7 +16,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from collector import check, rounds, stores  # noqa: E402
+from collector import check, dhlottery, rounds, stores  # noqa: E402
 from collector.contract import ContractError, validate_rounds, validate_stores  # noqa: E402
 from collector.dhlottery import BlockedError, Client, CollectError, FormatChangedError  # noqa: E402
 from collector.geo import road_address_core, road_key, utmk_to_wgs84, valid_coord, wgs84_to_utmk  # noqa: E402
@@ -69,6 +69,7 @@ class RoutedClient:
     def __init__(self, routes):
         self.routes = routes
         self.request_count = 0
+        self.min_interval = 0
 
     def get_json(self, path, params):
         self.request_count += 1
@@ -156,7 +157,7 @@ class ClientTest(unittest.TestCase):
             slept.append(s)
             now[0] += s
 
-        c = Client(opener=opener_returning(_Res("{}")), sleep=sleep, clock=lambda: now[0])
+        c = Client(opener=opener_returning(_Res("{}")), sleep=sleep, clock=lambda: now[0], min_interval=1.0)
         c.get_json("/a", {})
         now[0] += 0.3
         c.get_json("/a", {})
@@ -172,13 +173,47 @@ class ClientTest(unittest.TestCase):
         self.assertIn("접속 차단", str(cm.exception))
         self.assertEqual(len(op.calls), 1)
 
-    def test_timeout_is_block_after_retries(self):
+    def test_timeout_pauses_60s_and_retries_same_request_3_times(self):
         op = opener_returning(urllib.error.URLError(socket.timeout("timed out")))
-        c = Client(opener=op, sleep=lambda s: None, retries=3)
+        slept, logs = [], []
+        c = Client(opener=op, sleep=slept.append, min_interval=0, log=logs.append)
         with self.assertRaises(BlockedError) as cm:
-            c.get_json("/a", {})
+            c.get_json("/a", {"pageNum": 7})
         self.assertIn("시간 초과", str(cm.exception))
+        self.assertIn("60초씩 쉬고 3번 다시", str(cm.exception))
+        self.assertTrue(cm.exception.timeout)
+        self.assertEqual(len(op.calls), 4)
+        self.assertEqual(len(set(op.calls)), 1)
+        self.assertEqual(slept, [60.0, 60.0, 60.0])
+        self.assertEqual(len(logs), 3)
+
+    def test_timeout_then_success(self):
+        op = opener_returning(urllib.error.URLError(socket.timeout("timed out")), _Res('{"ok": 1}'))
+        slept = []
+        c = Client(opener=op, sleep=slept.append, min_interval=0, log=lambda m: None)
+        self.assertEqual(c.get_json("/a", {}), {"ok": 1})
+        self.assertEqual(slept, [60.0])
+
+    def test_server_error_retries_short(self):
+        err = urllib.error.HTTPError("u", 502, "Bad Gateway", {}, None)
+        op = opener_returning(err)
+        slept = []
+        c = Client(opener=op, sleep=slept.append, min_interval=0, retries=3)
+        with self.assertRaises(BlockedError):
+            c.get_json("/a", {})
         self.assertEqual(len(op.calls), 3)
+        self.assertEqual(slept, [5, 10])
+
+    def test_default_interval(self):
+        self.assertEqual(dhlottery.default_interval({"RUNNER_ENVIRONMENT": "github-hosted"}), 3.0)
+        self.assertEqual(dhlottery.default_interval({"RUNNER_ENVIRONMENT": "self-hosted"}), 1.0)
+        self.assertEqual(dhlottery.default_interval({}), 1.0)
+        self.assertEqual(dhlottery.default_interval(
+            {"RUNNER_ENVIRONMENT": "github-hosted", "COLLECTOR_INTERVAL": "5"}), 5.0)
+        with self.assertRaises(ValueError):
+            dhlottery.default_interval({"COLLECTOR_INTERVAL": "0.5"})
+        with self.assertRaises(ValueError):
+            dhlottery.default_interval({"COLLECTOR_INTERVAL": "abc"})
 
     def test_transient_error_then_success(self):
         c = fake_client(urllib.error.URLError(ConnectionResetError()), _Res('{"data": 1}'))
@@ -212,6 +247,14 @@ class ClientTest(unittest.TestCase):
             Client(opener=capture, sleep=lambda s: None).get_json("/a", {})
         self.assertEqual(seen["ua"], "SpeettoDataCollector/1.0 (com.susuim.speetto; contact@example.org)")
 
+    def test_user_agent_summary_hides_contact(self):
+        with mock.patch.dict("os.environ", {"COLLECTOR_CONTACT": "contact@example.org"}):
+            s = dhlottery.user_agent_summary()
+        self.assertNotIn("contact@example.org", s)
+        self.assertIn("연락처 설정됨", s)
+        with mock.patch.dict("os.environ", {"COLLECTOR_CONTACT": ""}):
+            self.assertIn("연락처 없음", dhlottery.user_agent_summary())
+
 
 class CheckTest(unittest.TestCase):
     def run_check(self, client, env=None):
@@ -223,6 +266,13 @@ class CheckTest(unittest.TestCase):
     def test_ok(self):
         code, out = self.run_check(fake_client(_Res('{"data": {"total": 36, "list": []}}')))
         self.assertEqual(code, 0)
+
+    def test_log_hides_contact(self):
+        code, out = self.run_check(fake_client(_Res('{"data": {"total": 36, "list": []}}')),
+                                   {"COLLECTOR_CONTACT": "contact@example.org"})
+        self.assertEqual(code, 0)
+        self.assertNotIn("contact@example.org", out)
+        self.assertIn("연락처 설정됨", out)
         self.assertIn("접속 정상", out)
 
     def test_blocked_on_github_runner(self):
@@ -301,6 +351,40 @@ class StoresTest(unittest.TestCase):
         rows = stores.fetch_all(c, log=lambda *a: None)
         self.assertEqual(len(rows), 23)
         self.assertEqual(c.request_count, 3)
+
+    def test_fetch_all_logs_every_10_pages(self):
+        c = self.pages(250, lambda p: [store_row(ltShpId=f"{p}-{i}") for i in range(10)])
+        logs, now = [], [0.0]
+
+        def clock():
+            now[0] += 3
+            return now[0]
+
+        stores.fetch_all(c, log=logs.append, clock=clock)
+        progress = [m for m in logs if "/25쪽" in m]
+        self.assertEqual([m.split("쪽")[0].strip() for m in progress], ["10/25", "20/25", "25/25"])
+        self.assertIn("10/25쪽, 경과 0분 ", progress[0])
+
+    def test_fetch_all_failure_says_where(self):
+        def routes(path, params):
+            if params["pageNum"] == 3:
+                return BlockedError("응답 시간 초과", timeout=True)
+            return {"data": {"total": 50, "list": [store_row(ltShpId=f"{params['pageNum']}-{i}") for i in range(10)]}}
+
+        logs = []
+        with self.assertRaises(BlockedError) as cm:
+            stores.fetch_all(RoutedClient(routes), log=logs.append)
+        self.assertIn("3/5쪽, 3번째 요청", str(cm.exception))
+        self.assertIn("응답 시간 초과", str(cm.exception))
+        self.assertTrue(any(m.startswith("실패 지점: 3/5쪽") for m in logs))
+
+    def test_main_log_hides_contact(self):
+        c = self.pages(1, lambda p: [store_row()])
+        with tempfile.TemporaryDirectory() as d,                 mock.patch.dict("os.environ", {"COLLECTOR_CONTACT": "contact@example.org"}):
+            code, log = self.run_main(["--out", str(Path(d) / "stores.json")], c)
+        self.assertEqual(code, 0)
+        self.assertNotIn("contact@example.org", log)
+        self.assertIn("연락처 설정됨", log)
 
     def test_fetch_all_incomplete_fails(self):
         c = self.pages(30, lambda p: [store_row(ltShpId=f"{p}-{i}") for i in range(10)] if p < 3 else [])

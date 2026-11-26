@@ -14,7 +14,7 @@ import argparse
 import os
 import sys
 
-from .dhlottery import BASE_URL, BlockedError, Client, FormatChangedError
+from .dhlottery import BASE_URL, BlockedError, Client, FormatChangedError, user_agent_summary
 from .output import gh_error
 
 TARGETS = {
@@ -37,6 +37,7 @@ def check(target: str, client: Client) -> int:
     path, params = TARGETS[target]
     where = f"{BASE_URL}{path}"
     print(f"동행복권 접속 확인: {where} — 러너 {runner_label()}", flush=True)
+    print(f"User-Agent: {user_agent_summary()}, 요청 간격 {client.min_interval:g}초", flush=True)
     try:
         doc = client.get_json(path, params)
     except BlockedError as e:

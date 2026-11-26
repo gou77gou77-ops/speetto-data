@@ -44,3 +44,13 @@ def gh_error(title: str, message: str) -> None:
 
 def gh_warning(title: str, message: str) -> None:
     print(f"::warning title={title}::{message}", flush=True)
+
+
+def log(message: str) -> None:
+    """진행 로그. Actions에서도 바로 보이게 줄마다 내보낸다."""
+    print(message, flush=True)
+
+
+def elapsed(seconds: float) -> str:
+    m, s = divmod(int(seconds), 60)
+    return f"{m}분 {s:02d}초"

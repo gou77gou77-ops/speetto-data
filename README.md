@@ -15,7 +15,7 @@ collector/
   stores.py       전국 판매점 → stores.json (시군구 하나만 받는 시험 옵션)
   scoring.py      오라클 지수, 상태(active/endgame/ended), 라벨(grade) — 점수 규칙의 기준
   contract.py     출력 형식 검사. 어긋나면 파일을 쓰지 않는다
-  dhlottery.py    요청 공통: User-Agent, 1초 1건, 재시도, 차단·형식 오류 구분
+  dhlottery.py    요청 공통: User-Agent, 요청 간격(GitHub 3초 / 내 PC 1초), 재시도, 차단·형식 오류 구분
   juso.py         행안부 도로명주소 API 지오코딩 (키가 없으면 건너뜀)
   geo.py          좌표 범위, 거리, 도로명 비교, UTM-K → WGS84
   output.py       파일을 다 만든 뒤 한 번에 바꾸기, Actions 오류 표시
@@ -40,8 +40,10 @@ requirements.txt  (지금은 표준 라이브러리만)
 
 ## 수집 규칙
 
-- 동행복권 요청은 **1초에 1건 이하**. User-Agent는 `SpeettoDataCollector/1.0 (com.susuim.speetto; <연락처>)`. 연락처는 코드에 적지 않고 저장소 Variable `COLLECTOR_CONTACT`에서 읽는다.
-- 판매점 전체 목록(약 1,448번 요청, 약 25분)은 **끝까지 다 받았을 때만** stores.json을 바꾼다. 중간에 하나라도 실패하면 지난주 파일을 유지한다.
+- 동행복권 요청 간격은 **GitHub 러너 3초, 내 PC(self-hosted·로컬) 1초**가 기본이고 1초보다 짧게 할 수 없다. 바꾸려면 `COLLECTOR_INTERVAL`(초).
+- 응답 시간 초과가 나면 **60초 쉬고 같은 요청을 최대 3번** 다시 한다. 그 밖의 일시 오류(5xx, 연결 끊김)는 5초·10초 쉬고 다시 한다. 403·429·HTML 응답은 다시 하지 않는다.
+- User-Agent는 `SpeettoDataCollector/1.0 (com.susuim.speetto; <연락처>)`. 연락처는 코드에 적지 않고 저장소 **Secret** `COLLECTOR_CONTACT`에서 읽는다. 로그에는 연락처 값 대신 "연락처 설정됨/없음"만 남긴다(공개 저장소 로그는 누구나 본다).
+- 판매점 전체 목록(약 1,448번 요청, 3초 간격 약 75분 / 1초 간격 약 25분)은 **끝까지 다 받았을 때만** stores.json을 바꾼다. 중간에 하나라도 실패하면 지난주 파일을 유지한다.
 - 좌표가 비었거나 한국 범위(위도 33~39, 경도 124~132) 밖인 판매점만 행안부 도로명주소 API로 좌표를 구한다. 키는 Actions secret `JUSO_API_KEY`. 행안부로도 못 찾으면 `lat`/`lng`를 null로 둔다(앱은 목록에만 표시). Nominatim 등 다른 지오코더는 쓰지 않는다.
 - 1등 배출점은 최신 stores.json과 **좌표 30 m 이내 + 도로명 주소 앞부분 일치**로 짝을 짓는다. 짝이 없으면 배출 데이터의 좌표를 쓰고 `inStoreList: false`("현재 판매점 목록에 없음").
 
@@ -50,14 +52,15 @@ requirements.txt  (지금은 표준 라이브러리만)
 ```
 python -m collector.check --target rounds        # 접속 확인 (stores도 있음)
 python -m collector.stores --sido 서울 --sigungu 서초구   # 시험: out/stores.sample.json (약 10초)
-python -m collector.stores                        # 전국: out/stores.json (약 25분)
+python -m collector.stores                        # 전국: out/stores.json (내 PC 1초 간격 약 25분)
 python -m collector.rounds --stores out/stores.sample.json   # out/rounds_latest.json (약 75초)
 python -m unittest discover -s tests
 ```
 
 - `out/`은 커밋하지 않는다. 워크플로에서는 `out/`이 gh-pages 브랜치를 받은 폴더다.
 - 시군구 시험 결과는 `stores.json`이라는 이름으로 쓸 수 없다(전국 파일을 덮어쓰지 않게).
-- 환경 변수: `COLLECTOR_CONTACT`(User-Agent 연락처), `JUSO_API_KEY`, `JUSO_COORD_API_KEY`(좌표제공 API 키가 따로일 때). 키가 없으면 지오코딩만 건너뛴다.
+- 진행 로그는 줄마다 바로 내보낸다(워크플로는 `python -u`). 판매점은 10쪽마다 `N/1448쪽, 경과 M분`, 실패하면 `실패 지점: N쪽, K번째 요청, 시작 M분 뒤`.
+- 환경 변수: `COLLECTOR_CONTACT`(User-Agent 연락처, Secret), `COLLECTOR_INTERVAL`(요청 간격 초, 비우면 GitHub 3 / 내 PC 1), `JUSO_API_KEY`, `JUSO_COORD_API_KEY`(좌표제공 API 키가 따로일 때). 키가 없으면 지오코딩만 건너뛴다.
 - Windows 콘솔에서 한글이 깨지면 `PYTHONIOENCODING=utf-8`.
 
 | 종료 코드 | 뜻 | 기존 JSON |

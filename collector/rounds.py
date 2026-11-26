@@ -15,10 +15,10 @@ from pathlib import Path
 from typing import Any
 
 from .contract import validate_rounds
-from .dhlottery import BlockedError, Client, CollectError, FormatChangedError
+from .dhlottery import BlockedError, Client, CollectError, FormatChangedError, user_agent_summary
 from .geo import distance_m, road_key, valid_coord
 from .juso import Geocoder
-from .output import gh_error, gh_warning, now_kst, read_json, write_json_atomic
+from .output import gh_error, gh_warning, log, now_kst, read_json, write_json_atomic
 from .scoring import Prize, RoundInput, parse_amount, score_round
 
 LIST_PATH = "/st/selectPblcnDsctn.do"
@@ -209,11 +209,12 @@ def build_winner(row: dict[str, Any], index: StoreIndex, geocoder: Geocoder | No
 
 # ---------- 전체 ----------
 
-def collect(client: Client, stores: list[dict[str, Any]], geocoder: Geocoder | None, log=print) -> dict[str, Any]:
+def collect(client: Client, stores: list[dict[str, Any]], geocoder: Geocoder | None, log=log) -> dict[str, Any]:
     items = fetch_list(client)
     log(f"회차 {len(items)}개")
     rounds = [build_round(item, fetch_detail(client, item["ntslWnSn"])) for item in items]
 
+    log(f"회차 상세 {len(rounds)}개 받음, 요청 {client.request_count}번")
     index = StoreIndex(stores)
     for r in rounds:
         r["winners"] = [build_winner(row, index, geocoder) for row in fetch_winners(client, r["product"], r["round"])]
@@ -249,10 +250,11 @@ def main(argv: list[str] | None = None) -> int:
         gh_warning("지오코딩 건너뜀", "JUSO_API_KEY가 없어 좌표 없는 1등 배출점은 좌표 null로 둡니다")
 
     client = Client()
+    log(f"User-Agent: {user_agent_summary()}, 요청 간격 {client.min_interval:g}초")
     try:
         doc = collect(client, stores_doc["stores"], geocoder)
     except BlockedError as e:
-        gh_error("접속 차단", f"회차 수집 중 동행복권 접속 실패: {e}. {out}은 바꾸지 않았습니다")
+        gh_error("접속 차단", f"회차 수집 중 동행복권 접속 실패({client.request_count}번째 요청): {e}. {out}은 바꾸지 않았습니다")
         return 2
     except (CollectError, ValueError) as e:
         gh_error("회차 수집 실패", f"{e}. {out}은 바꾸지 않았습니다")
@@ -260,7 +262,7 @@ def main(argv: list[str] | None = None) -> int:
 
     write_json_atomic(out, doc)
     winners = [w for r in doc["rounds"] for w in r["winners"]]
-    print(f"저장: {out} — 회차 {len(doc['rounds'])}개, 1등 배출 {len(winners)}건 "
+    log(f"저장: {out} — 회차 {len(doc['rounds'])}개, 1등 배출 {len(winners)}건 "
           f"(판매점 목록에 있음 {sum(w['inStoreList'] for w in winners)}, 없음 {sum(not w['inStoreList'] for w in winners)}, "
           f"좌표 없음 {sum(w['lat'] is None for w in winners)}), 기준 판매점 {stores_doc.get('total')}곳, "
           f"출고율 기준 {doc['stockDate']}, 요청 {client.request_count}번")
