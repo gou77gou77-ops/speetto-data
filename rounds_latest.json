@@ -1,0 +1,3529 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-11-26T14:38:57+09:00",
+ "stockDate": "2026-11-20",
+ "rounds": [
+  {
+   "id": 5808,
+   "product": "SP2000",
+   "round": 70,
+   "price": 2000,
+   "status": "active",
+   "stockRate": 64,
+   "stockDate": "2026-11-20",
+   "issued": 40000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 8,
+     "remaining": 4,
+     "asOf": "2026-11-20"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 24,
+     "remaining": 14,
+     "asOf": "2026-11-11"
+    }
+   ],
+   "index": 1.442,
+   "score": 72.1,
+   "grade": "good",
+   "lowStock": false,
+   "saleStartDate": "2026-09-23",
+   "saleEndDate": "2026-12-31",
+   "payEndDate": "2027-12-31",
+   "winners": [
+    {
+     "storeId": "14130001",
+     "name": "일등로또",
+     "address": "경기 수원시 장안구 대평로 86 116호",
+     "lat": 37.295992,
+     "lng": 126.99328,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14130001",
+     "name": "일등로또",
+     "address": "경기 수원시 장안구 대평로 86 116호",
+     "lat": 37.295992,
+     "lng": 126.99328,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12710129",
+     "name": "일등복권편의점",
+     "address": "대구 달서구 대명천로 220 1층",
+     "lat": 35.842204,
+     "lng": 128.53619,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12710129",
+     "name": "일등복권편의점",
+     "address": "대구 달서구 대명천로 220 1층",
+     "lat": 35.842204,
+     "lng": 128.53619,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 5785,
+   "product": "SP2000",
+   "round": 69,
+   "price": 2000,
+   "status": "active",
+   "stockRate": 99,
+   "stockDate": "2026-11-20",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 10,
+     "remaining": 1,
+     "asOf": "2026-10-23"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 30,
+     "remaining": 4,
+     "asOf": "2026-10-20"
+    }
+   ],
+   "index": 10.769,
+   "score": 100.0,
+   "grade": "strong",
+   "lowStock": true,
+   "saleStartDate": "2026-07-03",
+   "saleEndDate": "2026-11-30",
+   "payEndDate": "2027-11-30",
+   "winners": [
+    {
+     "storeId": "14130178",
+     "name": "로또편의점",
+     "address": "경기 김포시 김포한강11로 288-32 골든스퀘어101호",
+     "lat": 37.654305,
+     "lng": 126.68417,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14130178",
+     "name": "로또편의점",
+     "address": "경기 김포시 김포한강11로 288-32 골든스퀘어101호",
+     "lat": 37.654305,
+     "lng": 126.68417,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140711",
+     "name": "은행복권방",
+     "address": "경기 성남시 중원구 산성대로 512-1 1층 1호",
+     "lat": 37.456671,
+     "lng": 127.16348,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140711",
+     "name": "은행복권방",
+     "address": "경기 성남시 중원구 산성대로 512-1 1층 1호",
+     "lat": 37.456671,
+     "lng": 127.16348,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14800183",
+     "name": "포시즌",
+     "address": "경남 김해시 내외중앙로 99 복권판매점",
+     "lat": 35.238828,
+     "lng": 128.867158,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14800183",
+     "name": "포시즌",
+     "address": "경남 김해시 내외중앙로 99 복권판매점",
+     "lat": 35.238828,
+     "lng": 128.867158,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14790028",
+     "name": "황금복권",
+     "address": "경북 영주시 구성로 379-1",
+     "lat": 36.824963,
+     "lng": 128.6207,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11110413",
+     "name": "다산행운방",
+     "address": "서울 중구 다산로36길 21 1층 코너",
+     "lat": 37.562503,
+     "lng": 127.01652,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11110413",
+     "name": "다산행운방",
+     "address": "서울 중구 다산로36길 21 1층 코너",
+     "lat": 37.562503,
+     "lng": 127.01652,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 5156,
+   "product": "SP2000",
+   "round": 68,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 40000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 8,
+     "remaining": 1,
+     "asOf": "2026-09-01"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 24,
+     "remaining": 0,
+     "asOf": "2026-10-12"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2026-04-30",
+   "saleEndDate": "2026-09-30",
+   "payEndDate": "2027-09-30",
+   "winners": [
+    {
+     "storeId": "14140229",
+     "name": "금강복권",
+     "address": "경기 김포시 율생로 3",
+     "lat": 37.652686,
+     "lng": 126.59053,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140875",
+     "name": "행운복권",
+     "address": "경기 연천군 현문로5번길 3 나동",
+     "lat": 38.076853,
+     "lng": 127.07816,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140875",
+     "name": "행운복권",
+     "address": "경기 연천군 현문로5번길 3 나동",
+     "lat": 38.076853,
+     "lng": 127.07816,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "메트로센터점",
+     "address": "대구 중구 달구벌대로 2100 지하 C412호",
+     "lat": 35.865503,
+     "lng": 128.593494,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "메트로센터점",
+     "address": "대구 중구 달구벌대로 2100 지하 C412호",
+     "lat": 35.865503,
+     "lng": 128.593494,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12640023",
+     "name": "럭키",
+     "address": "부산 북구 시랑로 137",
+     "lat": 35.19547,
+     "lng": 129.01039,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640023",
+     "name": "럭키",
+     "address": "부산 북구 시랑로 137",
+     "lat": 35.19547,
+     "lng": 129.01039,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 4714,
+   "product": "SP2000",
+   "round": 67,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 81,
+   "stockDate": "2026-11-20",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2026-05-06"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 5,
+     "asOf": "2026-05-12"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-03-20",
+   "saleEndDate": "2026-08-31",
+   "payEndDate": "2027-08-31",
+   "winners": [
+    {
+     "storeId": "14290015",
+     "name": "슈퍼맨편의점",
+     "address": "강원 강릉시 경강로 2113 1층1호, 꽃사슴복권방",
+     "lat": 37.756088,
+     "lng": 128.89759,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14290015",
+     "name": "슈퍼맨편의점",
+     "address": "강원 강릉시 경강로 2113 1층1호, 꽃사슴복권방",
+     "lat": 37.756088,
+     "lng": 128.89759,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "삼성로또명당",
+     "address": "인천 계양구 하느재로 14 1층 152호",
+     "lat": 37.544331,
+     "lng": 126.725386,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "삼성로또명당",
+     "address": "인천 계양구 하느재로 14 1층 152호",
+     "lat": 37.544331,
+     "lng": 126.725386,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "홍이복권방",
+     "address": "인천 서해구 중봉대로 759 1층",
+     "lat": 37.54774,
+     "lng": 126.649429,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "홍이복권방",
+     "address": "인천 서해구 중봉대로 759 1층",
+     "lat": 37.54774,
+     "lng": 126.649429,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 2241,
+   "product": "SP2000",
+   "round": 66,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 74,
+   "stockDate": "2026-11-20",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2026-03-20"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 3,
+     "asOf": "2026-07-29"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-01-23",
+   "saleEndDate": "2026-06-30",
+   "payEndDate": "2027-06-30",
+   "winners": [
+    {
+     "storeId": "14142557",
+     "name": "드림로또아이스크림판매점",
+     "address": "경기 수원시 팔달구 아주로27번길 43 104호 (우만동, 드림타워)",
+     "lat": 37.277122,
+     "lng": 127.0413,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142557",
+     "name": "드림로또아이스크림판매점",
+     "address": "경기 수원시 팔달구 아주로27번길 43 104호 (우만동, 드림타워)",
+     "lat": 37.277122,
+     "lng": 127.0413,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140911",
+     "name": "용인로또복권방",
+     "address": "경기 용인시 처인구 백옥대로 2076-1",
+     "lat": 37.310272,
+     "lng": 127.24058,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140911",
+     "name": "용인로또복권방",
+     "address": "경기 용인시 처인구 백옥대로 2076-1",
+     "lat": 37.310272,
+     "lng": 127.24058,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "카카오복권방",
+     "address": "전북 익산시 금마길 58-1 1층",
+     "lat": 35.991671,
+     "lng": 127.052907,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "카카오복권방",
+     "address": "전북 익산시 금마길 58-1 1층",
+     "lat": 35.991671,
+     "lng": 127.052907,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 2139,
+   "product": "SP2000",
+   "round": 65,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2026-04-01"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 0,
+     "asOf": "2026-04-30"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-12-29",
+   "saleEndDate": "2026-04-30",
+   "payEndDate": "2027-04-30",
+   "winners": [
+    {
+     "storeId": "14500018",
+     "name": "노다지복권명당",
+     "address": "전북 군산시 문화로 119",
+     "lat": 35.970096,
+     "lng": 126.71897,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14500018",
+     "name": "노다지복권명당",
+     "address": "전북 군산시 문화로 119",
+     "lat": 35.970096,
+     "lng": 126.71897,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14420006",
+     "name": "왕대박복권",
+     "address": "충남 논산시 계백로 1853 편의점",
+     "lat": 36.212401,
+     "lng": 127.17896,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14420006",
+     "name": "왕대박복권",
+     "address": "충남 논산시 계백로 1853 편의점",
+     "lat": 36.212401,
+     "lng": 127.17896,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14340039",
+     "name": "일등대박복권방",
+     "address": "충북 진천군 중앙동로 74-1 1층",
+     "lat": 36.856535,
+     "lng": 127.44515,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14340039",
+     "name": "일등대박복권방",
+     "address": "충북 진천군 중앙동로 74-1 1층",
+     "lat": 36.856535,
+     "lng": 127.44515,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2050,
+   "product": "SP2000",
+   "round": 64,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 80,
+   "stockDate": "2026-11-20",
+   "issued": 40000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 8,
+     "remaining": 4,
+     "asOf": "2025-12-23"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 24,
+     "remaining": 6,
+     "asOf": "2026-03-11"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2025-10-13",
+   "saleEndDate": "2025-12-31",
+   "payEndDate": "2026-12-31",
+   "winners": [
+    {
+     "storeId": "11140357",
+     "name": "갑부복권판매점",
+     "address": "서울 용산구 대사관로 80",
+     "lat": 37.533065,
+     "lng": 127.00686,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140357",
+     "name": "갑부복권판매점",
+     "address": "서울 용산구 대사관로 80",
+     "lat": 37.533065,
+     "lng": 127.00686,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12890025",
+     "name": "대박천하마트",
+     "address": "인천 부평구 굴포로 48",
+     "lat": 37.511576,
+     "lng": 126.7263,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12890025",
+     "name": "대박천하마트",
+     "address": "인천 부평구 굴포로 48",
+     "lat": 37.511576,
+     "lng": 126.7263,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2010,
+   "product": "SP2000",
+   "round": 63,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 92,
+   "stockDate": "2026-11-20",
+   "issued": 40000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 8,
+     "remaining": 2,
+     "asOf": "2025-11-28"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 24,
+     "remaining": 1,
+     "asOf": "2025-12-03"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2025-08-25",
+   "saleEndDate": "2025-11-30",
+   "payEndDate": "2026-11-30",
+   "winners": [
+    {
+     "storeId": "74761055",
+     "name": "대복유통할인마트",
+     "address": "경북 경주시 한빛길 24 28-1",
+     "lat": 35.852914,
+     "lng": 129.20439,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74761055",
+     "name": "대복유통할인마트",
+     "address": "경북 경주시 한빛길 24 28-1",
+     "lat": 35.852914,
+     "lng": 129.20439,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14700119",
+     "name": "로터리편의마트",
+     "address": "경북 포항시 북구 서동로 85 육거리",
+     "lat": 36.040751,
+     "lng": 129.36724,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14700119",
+     "name": "로터리편의마트",
+     "address": "경북 포항시 북구 서동로 85 육거리",
+     "lat": 36.040751,
+     "lng": 129.36724,
+     "inStoreList": true
+    },
+    {
+     "storeId": "13240015",
+     "name": "다정로또복권",
+     "address": "세종   다정중앙로 52",
+     "lat": 36.495181,
+     "lng": 127.24925,
+     "inStoreList": true
+    },
+    {
+     "storeId": "13240015",
+     "name": "다정로또복권",
+     "address": "세종   다정중앙로 52",
+     "lat": 36.495181,
+     "lng": 127.24925,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1950,
+   "product": "SP2000",
+   "round": 62,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 98,
+   "stockDate": "2026-11-06",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2025-09-26"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 1,
+     "asOf": "2025-09-30"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-07-04",
+   "saleEndDate": "2025-10-31",
+   "payEndDate": "2026-10-31",
+   "winners": [
+    {
+     "storeId": "74260359",
+     "name": "CU동해북평점",
+     "address": "강원 동해시 오일장2길 2 1층",
+     "lat": 37.481432,
+     "lng": 129.12758,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74260359",
+     "name": "CU동해북평점",
+     "address": "강원 동해시 오일장2길 2 1층",
+     "lat": 37.481432,
+     "lng": 129.12758,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14110561",
+     "name": "마두5번출구가판로또",
+     "address": "경기 고양시 일산동구 중앙로 1200",
+     "lat": 37.653793,
+     "lng": 126.7772,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14110561",
+     "name": "마두5번출구가판로또",
+     "address": "경기 고양시 일산동구 중앙로 1200",
+     "lat": 37.653793,
+     "lng": 126.7772,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141885",
+     "name": "영웅복권",
+     "address": "경기 용인시 기흥구 흥덕1로 52 1층 103호",
+     "lat": 37.273238,
+     "lng": 127.06914,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141885",
+     "name": "영웅복권",
+     "address": "경기 용인시 기흥구 흥덕1로 52 1층 103호",
+     "lat": 37.273238,
+     "lng": 127.06914,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1890,
+   "product": "SP2000",
+   "round": 61,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-10-02",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2025-08-05"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 1,
+     "asOf": "2025-10-01"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-05-23",
+   "saleEndDate": "2025-09-30",
+   "payEndDate": "2026-09-30",
+   "winners": [
+    {
+     "storeId": "14290041",
+     "name": "황금대박복권",
+     "address": "강원 원주시 중앙시장길 36 1층",
+     "lat": 37.350955,
+     "lng": 127.95029,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14290041",
+     "name": "황금대박복권",
+     "address": "강원 원주시 중앙시장길 36 1층",
+     "lat": 37.350955,
+     "lng": 127.95029,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100986",
+     "name": "가로판매점",
+     "address": "서울 서초구 신반포로 189 반포쇼핑4동 정문 앞 가로판매점",
+     "lat": 37.506334,
+     "lng": 127.004814,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100986",
+     "name": "가로판매점",
+     "address": "서울 서초구 신반포로 189 반포쇼핑4동 정문 앞 가로판매점",
+     "lat": 37.506334,
+     "lng": 127.004814,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14430023",
+     "name": "로또복권나눔커피",
+     "address": "충남 아산시 모산로 163 1층",
+     "lat": 36.775362,
+     "lng": 127.06067,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14430023",
+     "name": "로또복권나눔커피",
+     "address": "충남 아산시 모산로 163 1층",
+     "lat": 36.775362,
+     "lng": 127.06067,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1830,
+   "product": "SP2000",
+   "round": 60,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-10-02",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2025-06-04"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 0,
+     "asOf": "2026-06-29"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-03-18",
+   "saleEndDate": "2025-09-30",
+   "payEndDate": "2026-09-30",
+   "winners": [
+    {
+     "storeId": null,
+     "name": "복권방(기업은행)",
+     "address": "경기 수원시 팔달구 인계로 144-2 1층",
+     "lat": 37.266862,
+     "lng": 127.033259,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "복권방(기업은행)",
+     "address": "경기 수원시 팔달구 인계로 144-2 1층",
+     "lat": 37.266862,
+     "lng": 127.033259,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "행운복권방",
+     "address": "경기 안성시 서동대로 7184 1층 103호",
+     "lat": 37.083326,
+     "lng": 127.44884,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "행운복권방",
+     "address": "경기 안성시 서동대로 7184 1층 103호",
+     "lat": 37.083326,
+     "lng": 127.44884,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12840075",
+     "name": "부평 로또명당",
+     "address": "인천 부평구 장제로 227 1층 102호",
+     "lat": 37.505837,
+     "lng": 126.73084,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12840075",
+     "name": "부평 로또명당",
+     "address": "인천 부평구 장제로 227 1층 102호",
+     "lat": 37.505837,
+     "lng": 126.73084,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1770,
+   "product": "SP2000",
+   "round": 59,
+   "price": 2000,
+   "status": "ended",
+   "stockRate": 91,
+   "stockDate": "2026-09-04",
+   "issued": 30000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 1000000000,
+     "total": 6,
+     "remaining": 0,
+     "asOf": "2025-04-08"
+    },
+    {
+     "rank": 2,
+     "amount": 100000000,
+     "total": 18,
+     "remaining": 2,
+     "asOf": "2025-07-04"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-01-27",
+   "saleEndDate": "2025-08-31",
+   "payEndDate": "2026-08-31",
+   "winners": [
+    {
+     "storeId": "74162362",
+     "name": "가판대 버스표판매소남문점",
+     "address": "경기 수원시 팔달구 정조로791번길 2-2 1층",
+     "lat": 37.278662,
+     "lng": 127.016565,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74162362",
+     "name": "가판대 버스표판매소남문점",
+     "address": "경기 수원시 팔달구 정조로791번길 2-2 1층",
+     "lat": 37.278662,
+     "lng": 127.016565,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14190248",
+     "name": "천하명당",
+     "address": "경기 포천시 송우로 38",
+     "lat": 37.82848,
+     "lng": 127.14481,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14190248",
+     "name": "천하명당",
+     "address": "경기 포천시 송우로 38",
+     "lat": 37.82848,
+     "lng": 127.14481,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "GS25신천희망점",
+     "address": "대구 동구 동부로30길  1층",
+     "lat": 35.871309,
+     "lng": 128.628709,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "GS25신천희망점",
+     "address": "대구 동구 동부로30길  1층",
+     "lat": 35.871309,
+     "lng": 128.628709,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 6424,
+   "product": "SP1000",
+   "round": 112,
+   "price": 1000,
+   "status": "active",
+   "stockRate": 0,
+   "stockDate": "2026-11-20",
+   "issued": 60000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 12,
+     "remaining": 12,
+     "asOf": "2026-11-20"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 60,
+     "remaining": 60,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": 1.0,
+   "score": 50.0,
+   "grade": "normal",
+   "lowStock": false,
+   "saleStartDate": "2026-11-20",
+   "saleEndDate": "2026-12-31",
+   "payEndDate": "2027-12-31",
+   "winners": []
+  },
+  {
+   "id": 6075,
+   "product": "SP1000",
+   "round": 111,
+   "price": 1000,
+   "status": "active",
+   "stockRate": 51,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 7,
+     "asOf": "2026-11-20"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 45,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": 1.361,
+   "score": 68.0,
+   "grade": "good",
+   "lowStock": false,
+   "saleStartDate": "2026-10-23",
+   "saleEndDate": "2026-12-31",
+   "payEndDate": "2027-12-31",
+   "winners": [
+    {
+     "storeId": "14130030",
+     "name": "다올복권판매점",
+     "address": "경기 성남시 분당구 성남대로 51 143호",
+     "lat": 37.340505,
+     "lng": 127.108091,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14830042",
+     "name": "고현시장만남의광장복권방",
+     "address": "경남 거제시 거제중앙로19길 8 102호",
+     "lat": 34.885797,
+     "lng": 128.62365,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "선비일층슈퍼",
+     "address": "대전 대덕구 계족산로 135 상가동 110ZZ111호",
+     "lat": 36.366847,
+     "lng": 127.442676,
+     "inStoreList": false
+    },
+    {
+     "storeId": "13000036",
+     "name": "진플러스",
+     "address": "대전 중구 대종로 301-1",
+     "lat": 36.312805,
+     "lng": 127.43504,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 5713,
+   "product": "SP1000",
+   "round": 110,
+   "price": 1000,
+   "status": "active",
+   "stockRate": 92,
+   "stockDate": "2026-11-20",
+   "issued": 60000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 12,
+     "remaining": 0,
+     "asOf": "2026-11-25"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 60,
+     "remaining": 8,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": 0.278,
+   "score": 13.9,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-08-21",
+   "saleEndDate": "2026-11-30",
+   "payEndDate": "2027-11-30",
+   "winners": [
+    {
+     "storeId": "14142217",
+     "name": "대길복권방",
+     "address": "경기 안산시 상록구 용담마을길 5-5 1호",
+     "lat": 37.30137,
+     "lng": 126.90036,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14100247",
+     "name": "명당일세",
+     "address": "경기 평택시 평택로 80",
+     "lat": 36.994062,
+     "lng": 127.08488,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14810064",
+     "name": "대동복권방",
+     "address": "경남 김해시 월산로 112-57 이마트편의점 좌측 복권판매점",
+     "lat": 35.206927,
+     "lng": 128.80467,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14700066",
+     "name": "씨스페이스 경주세방매점",
+     "address": "경북 경주시 산업로 4447 (용강동)",
+     "lat": 35.876705,
+     "lng": 129.22648,
+     "inStoreList": true
+    },
+    {
+     "storeId": "72660001",
+     "name": "대성당",
+     "address": "부산 사상구 백양대로 438 대성아파트상가1층",
+     "lat": 35.152827,
+     "lng": 129.00406,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640611",
+     "name": "승리복권판매점",
+     "address": "부산 수영구 좌수영로101번길 52",
+     "lat": 35.173886,
+     "lng": 129.11716,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640585",
+     "name": "행운복권아하점",
+     "address": "부산 사상구 모라로 90-7",
+     "lat": 35.186241,
+     "lng": 128.9896,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101530",
+     "name": "예스로또",
+     "address": "서울 중랑구 면목로31길 43",
+     "lat": 37.576016,
+     "lng": 127.08276,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141526",
+     "name": "웨이스탑면목점 다올복권방",
+     "address": "서울 중랑구 면목로 423",
+     "lat": 37.589816,
+     "lng": 127.08699,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100210",
+     "name": "행운복권방",
+     "address": "서울 서대문구 신촌로 235-1",
+     "lat": 37.557408,
+     "lng": 126.95229,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14600083",
+     "name": "알리바이(나주점)",
+     "address": "전남광주 나주시 나주로 142 알리바이",
+     "lat": 35.031329,
+     "lng": 126.71715,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14940001",
+     "name": "삼다복권",
+     "address": "제주 제주시 일주서로 7479",
+     "lat": 33.493958,
+     "lng": 126.4457,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 5726,
+   "product": "SP1000",
+   "round": 109,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 60000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 12,
+     "remaining": 1,
+     "asOf": "2026-10-26"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 60,
+     "remaining": 1,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2026-07-17",
+   "saleEndDate": "2026-10-31",
+   "payEndDate": "2027-10-31",
+   "winners": [
+    {
+     "storeId": "14240173",
+     "name": "한우로또",
+     "address": "강원 횡성군 화성로 41 1층",
+     "lat": 37.49415,
+     "lng": 127.99018,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141593",
+     "name": "천하명당대박복권방",
+     "address": "경기 평택시 고덕여염6길 18 101호",
+     "lat": 37.039054,
+     "lng": 127.04667,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140998",
+     "name": "미사복권방",
+     "address": "경기 하남시 미사강변동로 85 105호 CU편의점",
+     "lat": 37.562583,
+     "lng": 127.19215,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140149",
+     "name": "복 돼지",
+     "address": "경기 시흥시 월곶중앙로70번길 3 상가동 1층 121호",
+     "lat": 37.389612,
+     "lng": 126.73817,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12710017",
+     "name": "로또복권",
+     "address": "대구 동구 아양로 294 1층",
+     "lat": 35.890433,
+     "lng": 128.64296,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140913",
+     "name": "명당로또 복권방",
+     "address": "서울 성북구 보국문로 74 1층",
+     "lat": 37.610947,
+     "lng": 127.0091,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101351",
+     "name": "문구뱅크",
+     "address": "서울 은평구 서오릉로 71 문구뱅크",
+     "lat": 37.607007,
+     "lng": 126.92195,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140143",
+     "name": "복권정복",
+     "address": "서울 강동구 고덕로24길 9 1층 104호",
+     "lat": 37.554293,
+     "lng": 127.13577,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14640053",
+     "name": "씨유(CU)광양서천점",
+     "address": "전남광주 광양시 서북로 68",
+     "lat": 34.976316,
+     "lng": 127.57628,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "현대장미슈퍼",
+     "address": "전북 익산시 동서로61길 41 1층",
+     "lat": 35.955091,
+     "lng": 126.980191,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14440001",
+     "name": "통정로또명당마트",
+     "address": "충남 천안시 동남구 통정4로 49 위너타워 맞은편",
+     "lat": 36.774988,
+     "lng": 127.13471,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 5505,
+   "product": "SP1000",
+   "round": 108,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 0,
+     "asOf": "2026-09-14"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 2,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-06-19",
+   "saleEndDate": "2026-09-30",
+   "payEndDate": "2027-09-30",
+   "winners": [
+    {
+     "storeId": "14290054",
+     "name": "복권마트 & 씨스페이스 홍천점",
+     "address": "강원 홍천군 홍천로 409 1층",
+     "lat": 37.691271,
+     "lng": 127.8899,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141009",
+     "name": "1등가즈아",
+     "address": "경기 화성시 병점구 효행로 1060 이타운4 108호",
+     "lat": 37.214351,
+     "lng": 127.04317,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14110529",
+     "name": "나눔로또한대점",
+     "address": "경기 안산시 상록구 중보로 57 한양대프라자106호",
+     "lat": 37.308108,
+     "lng": 126.85284,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142700",
+     "name": "수지구청역 3번출구 복권판매점",
+     "address": "경기 용인시 수지구 풍덕천로 111 지층B03호",
+     "lat": 37.322504,
+     "lng": 127.09412,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142700",
+     "name": "수지구청역 3번출구 복권판매점",
+     "address": "경기 용인시 수지구 풍덕천로 111 지층B03호",
+     "lat": 37.322504,
+     "lng": 127.09412,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140227",
+     "name": "안성휴게소 복권판매점(부산방향)",
+     "address": "경기 안성시 경부고속도로 365 안성휴게소 하행선 내",
+     "lat": 37.013581,
+     "lng": 127.14471,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14830021",
+     "name": "진양호",
+     "address": "경남 진주시 남강로 58 1층",
+     "lat": 35.162899,
+     "lng": 128.03945,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "스파",
+     "address": "서울 노원구 노원로 564 111호",
+     "lat": 37.661554,
+     "lng": 127.05626,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "잠실매점",
+     "address": "서울 송파구 올림픽로 275-2 잠실역8번 출구앞",
+     "lat": 37.513867,
+     "lng": 127.101348,
+     "inStoreList": false
+    },
+    {
+     "storeId": "11101602",
+     "name": "평안당",
+     "address": "서울 종로구 종로 219",
+     "lat": 37.571222,
+     "lng": 127.00217,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "광양복권나라(로터리)",
+     "address": "전남광주 광양시  1",
+     "lat": 34.971263,
+     "lng": 127.589779,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 5256,
+   "product": "SP1000",
+   "round": 107,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 60000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 12,
+     "remaining": 1,
+     "asOf": "2026-08-03"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 60,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2026-05-15",
+   "saleEndDate": "2026-08-31",
+   "payEndDate": "2027-08-31",
+   "winners": [
+    {
+     "storeId": "14141021",
+     "name": "동탄호수복권",
+     "address": "경기 화성시 동탄구 동탄순환대로 127-5 1층 101호",
+     "lat": 37.166089,
+     "lng": 127.10728,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74162048",
+     "name": "편의점사랑금정점",
+     "address": "경기 군포시 공단로 300 제1층",
+     "lat": 37.370986,
+     "lng": 126.944747,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14800177",
+     "name": "진빈레코드",
+     "address": "경남 밀양시 북성로 7",
+     "lat": 35.498558,
+     "lng": 128.743291,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12740047",
+     "name": "로또명당(유가테크노점)",
+     "address": "대구 달성군 테크노상업로 108 1동 1층 114호(테크노에이스)",
+     "lat": 35.693246,
+     "lng": 128.46113,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100531",
+     "name": "그린슈퍼",
+     "address": "서울 동대문구 왕산로 138",
+     "lat": 37.578037,
+     "lng": 127.03868,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "스파",
+     "address": "서울 노원구 노원로 564 111호",
+     "lat": 37.661554,
+     "lng": 127.05626,
+     "inStoreList": false
+    },
+    {
+     "storeId": "11142185",
+     "name": "영등포역 지하상가 1등 복권방",
+     "address": "서울 영등포구 경인로 지하 843 영등포역 지하도상가 13호(영등포역 6번출구 아래)",
+     "lat": 37.516462,
+     "lng": 126.90665,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "조치원복권방",
+     "address": "세종   새내로 103 1층",
+     "lat": 36.601037,
+     "lng": 127.29792,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12840294",
+     "name": "로또100",
+     "address": "인천 서해구 청라커낼로 264 1층 101-A호(청라동, 청라두손중앙프라자)",
+     "lat": 37.532092,
+     "lng": 126.64497,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14430023",
+     "name": "로또복권나눔커피",
+     "address": "충남 아산시 모산로 163 1층",
+     "lat": 36.775362,
+     "lng": 127.06067,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14340288",
+     "name": "골드로또",
+     "address": "충북 제천시 명륜로3길 2 1층",
+     "lat": 37.144243,
+     "lng": 128.20309,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 4682,
+   "product": "SP1000",
+   "round": 106,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 60000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 12,
+     "remaining": 1,
+     "asOf": "2026-07-21"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 60,
+     "remaining": 1,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2026-04-24",
+   "saleEndDate": "2026-07-31",
+   "payEndDate": "2027-07-31",
+   "winners": [
+    {
+     "storeId": "14100364",
+     "name": "대광슈퍼",
+     "address": "경기 군포시 고산로 679 미성프라자106호",
+     "lat": 37.371098,
+     "lng": 126.93398,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142857",
+     "name": "빵터지는 복권방",
+     "address": "경기 김포시 김포한강2로 92 메이플플라자 101호",
+     "lat": 37.638813,
+     "lng": 126.67309,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14800043",
+     "name": "북마산복권전문점",
+     "address": "경남 창원시 마산합포구 북성로 98",
+     "lat": 35.215965,
+     "lng": 128.57054,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14840422",
+     "name": "씨유거제사등새아침점",
+     "address": "경남 거제시 거제대로 5501 주2동 103호,104호",
+     "lat": 34.910634,
+     "lng": 128.54363,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14740186",
+     "name": "문경로또",
+     "address": "경북 문경시 문희로 19-1",
+     "lat": 36.734095,
+     "lng": 128.10833,
+     "inStoreList": true
+    },
+    {
+     "storeId": "73060891",
+     "name": "CU대전가양사랑점",
+     "address": "대전 동구 우암로 292 1층",
+     "lat": 36.34622,
+     "lng": 127.447969,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640459",
+     "name": "엔젤로또복권명당",
+     "address": "부산 수영구 수영로741번길 9",
+     "lat": 35.168761,
+     "lng": 129.12063,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11190156",
+     "name": "소리창고",
+     "address": "서울 강서구 강서로 306",
+     "lat": 37.552887,
+     "lng": 126.83674,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141034",
+     "name": "일확천금 복권방",
+     "address": "서울 강남구 강남대로122길 10 1층",
+     "lat": 37.50766,
+     "lng": 127.02407,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12840537",
+     "name": "도깨비 복권점",
+     "address": "인천 연수구 한나루로 171 1-2호(옥련동)",
+     "lat": 37.424788,
+     "lng": 126.65561,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14430044",
+     "name": "로또당진합덕원룸점",
+     "address": "충남 당진시 미락5길 27-3 1층 101호",
+     "lat": 36.807684,
+     "lng": 126.76821,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 3261,
+   "product": "SP1000",
+   "round": 105,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 99,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 0,
+     "asOf": "2026-05-18"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 2,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-03-13",
+   "saleEndDate": "2026-06-30",
+   "payEndDate": "2027-06-30",
+   "winners": [
+    {
+     "storeId": null,
+     "name": "다니엘사",
+     "address": "경기 안산시 단원구 원선1로 38 두산위브아파트상가 101호",
+     "lat": 37.326156,
+     "lng": 126.804223,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14142760",
+     "name": "미사",
+     "address": "경기 하남시 미사강변동로 121 더랜드시티 1층 111호",
+     "lat": 37.565409,
+     "lng": 127.19139,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14190125",
+     "name": "행운나라복권방",
+     "address": "경기 안양시 만안구 충훈로 95",
+     "lat": 37.407445,
+     "lng": 126.89794,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141671",
+     "name": "행복점빵",
+     "address": "경기 고양시 덕양구 지축1로 41 108호",
+     "lat": 37.648682,
+     "lng": 126.91496,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141236",
+     "name": "동아줄 복권판매점",
+     "address": "서울 마포구 월드컵북로 99 지층 102호(성산동, 성산빌딩)",
+     "lat": 37.56219,
+     "lng": 126.91422,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100274",
+     "name": "럭키복권샵",
+     "address": "서울 송파구 성내천로 218",
+     "lat": 37.499654,
+     "lng": 127.15171,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141157",
+     "name": "소망복권",
+     "address": "서울 구로구 경인로35길 83 1층 101호(고척동)",
+     "lat": 37.500151,
+     "lng": 126.852353,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11190162",
+     "name": "행운미니슈퍼",
+     "address": "서울 금천구 독산로44길 61",
+     "lat": 37.461901,
+     "lng": 126.907889,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "청사로또",
+     "address": "세종 세종특별자치시 절재로 194 중앙타운",
+     "lat": 36.508307,
+     "lng": 127.262445,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14600049",
+     "name": "일레븐마트무선점",
+     "address": "전남광주 여수시 성산로 19",
+     "lat": 34.773893,
+     "lng": 127.63977,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14590006",
+     "name": "또또복권방",
+     "address": "전북 익산시 고봉로32길 3",
+     "lat": 35.95981,
+     "lng": 126.97169,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2133,
+   "product": "SP1000",
+   "round": 104,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 1,
+     "asOf": "2026-04-15"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2026-02-06",
+   "saleEndDate": "2026-05-31",
+   "payEndDate": "2027-05-31",
+   "winners": [
+    {
+     "storeId": "14190163",
+     "name": "행운복권방",
+     "address": "경기 포천시 솔모루로 86-1",
+     "lat": 37.828831,
+     "lng": 127.14752,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "로또플렉스 시티세븐점",
+     "address": "경남 창원시 성산구 원이대로 320 1층 S-108호",
+     "lat": 35.239987,
+     "lng": 128.653829,
+     "inStoreList": false
+    },
+    {
+     "storeId": "74861689",
+     "name": "블루25부원점",
+     "address": "경남 김해시 호계로 421 1층",
+     "lat": 35.228012,
+     "lng": 128.88493,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140884",
+     "name": "꿀팁 복권명당",
+     "address": "서울 서초구 과천대로 946 1층7호",
+     "lat": 37.4749,
+     "lng": 126.98213,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101614",
+     "name": "뉴골드나라",
+     "address": "서울 광진구 광나루로 521",
+     "lat": 37.545126,
+     "lng": 127.087443,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "잠실매점",
+     "address": "서울 송파구 올림픽로 275-2 잠실역8번 출구앞",
+     "lat": 37.513867,
+     "lng": 127.101348,
+     "inStoreList": false
+    },
+    {
+     "storeId": "11140901",
+     "name": "현클로바",
+     "address": "서울 서초구 동작대로 54-1 1층 103호",
+     "lat": 37.48147,
+     "lng": 126.9822,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "로또일번지",
+     "address": "전남광주 남구 효우로 200 1층",
+     "lat": 35.101965,
+     "lng": 126.894345,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14500143",
+     "name": "혜성프라자",
+     "address": "전북 익산시 함열중앙로 10",
+     "lat": 36.078975,
+     "lng": 126.95851,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14390005",
+     "name": "복권명당",
+     "address": "충북 청주시 청원구 구룡택지로 8-21 104호",
+     "lat": 36.710294,
+     "lng": 127.415663,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2236,
+   "product": "SP1000",
+   "round": 103,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 0,
+     "asOf": "2026-03-31"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2026-01-19",
+   "saleEndDate": "2026-04-30",
+   "payEndDate": "2027-04-30",
+   "winners": [
+    {
+     "storeId": "14140873",
+     "name": "여주신륵로또",
+     "address": "경기 여주시 신륵로 37 1층",
+     "lat": 37.301047,
+     "lng": 127.654,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141421",
+     "name": "행운복권",
+     "address": "경기 안성시 승두1길 16 1층 102호",
+     "lat": 36.997057,
+     "lng": 127.16691,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14840533",
+     "name": "진례로또명당",
+     "address": "경남 김해시 테크노밸리1로 196-43 Cu편의점 옆",
+     "lat": 35.278317,
+     "lng": 128.770318,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12740374",
+     "name": "굿럭복권",
+     "address": "대구 수성구 동원로 109",
+     "lat": 35.868459,
+     "lng": 128.63768,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12790030",
+     "name": "로또복권(연경 뉴웰시티점)",
+     "address": "대구 동구 동화천로 405 104호(지묘동)",
+     "lat": 35.941509,
+     "lng": 128.63092,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140147",
+     "name": "로또은행복권방",
+     "address": "서울 강북구 도봉로 264 1층 101호",
+     "lat": 37.632043,
+     "lng": 127.02413,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101391",
+     "name": "에이원텔레콤",
+     "address": "서울 서초구 동광로 70 보배빌딩1층",
+     "lat": 37.492553,
+     "lng": 126.990256,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12840396",
+     "name": "여의주 로또복권",
+     "address": "인천 계양구 효서로 251 가동 1층일부",
+     "lat": 37.528092,
+     "lng": 126.72402,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14610106",
+     "name": "종합복권방",
+     "address": "전남광주 해남군 해남로 34",
+     "lat": 34.570811,
+     "lng": 126.61085,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "현대장미슈퍼",
+     "address": "전북 익산시 동서로61길 41 1층",
+     "lat": 35.955091,
+     "lng": 126.980191,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14440097",
+     "name": "이마트24 용두휴게소",
+     "address": "충남 천안시 동남구 매봉로 210 용두휴게소 이마트24 내",
+     "lat": 36.748552,
+     "lng": 127.30994,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2212,
+   "product": "SP1000",
+   "round": 102,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 55000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 11,
+     "remaining": 0,
+     "asOf": "2026-02-25"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 55,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-12-29",
+   "saleEndDate": "2026-03-31",
+   "payEndDate": "2027-03-31",
+   "winners": [
+    {
+     "storeId": "14190003",
+     "name": "희망복권",
+     "address": "경기 평택시 평택1로20번길 39 1층 복권방",
+     "lat": 36.994214,
+     "lng": 127.08927,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14110114",
+     "name": "희망을주는사람",
+     "address": "경기 용인시 처인구 양지로 111 1층 상가",
+     "lat": 37.23453,
+     "lng": 127.28051,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14890052",
+     "name": "씨스페이스 사천큰마트점",
+     "address": "경남 사천시 평화2길 22 1층",
+     "lat": 35.083055,
+     "lng": 128.08702,
+     "inStoreList": true
+    },
+    {
+     "storeId": "13000125",
+     "name": "그린편의점",
+     "address": "대전 서구 도산로181번길 2 편의점",
+     "lat": 36.324687,
+     "lng": 127.37851,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12690047",
+     "name": "우리들마트",
+     "address": "부산 동래구 온천장로119번길 20 10호(온천동, 온천아파트 점포)",
+     "lat": 35.221592,
+     "lng": 129.0838,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141324",
+     "name": "강남역로또",
+     "address": "서울 서초구 강남대로51길 10 105호",
+     "lat": 37.491281,
+     "lng": 127.02927,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "스파",
+     "address": "서울 노원구 노원로 564 111호",
+     "lat": 37.661554,
+     "lng": 127.05626,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12840406",
+     "name": "드림복권",
+     "address": "인천 남동구 은청로 16 1층 105호(고잔동, 동아빌딩)",
+     "lat": 37.406764,
+     "lng": 126.69452,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12840163",
+     "name": "희망로또 판매점",
+     "address": "인천 부평구 화랑로 94",
+     "lat": 37.491809,
+     "lng": 126.70448,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "프랜드마트두산점",
+     "address": "전북 전주시 덕진구 매봉로 10",
+     "lat": 35.840494,
+     "lng": 127.142289,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14490004",
+     "name": "복권명당",
+     "address": "충남 공주시 번영1로 41",
+     "lat": 36.471857,
+     "lng": 127.13309,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2070,
+   "product": "SP1000",
+   "round": 101,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-12-23"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 6,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-11-07",
+   "saleEndDate": "2025-12-31",
+   "payEndDate": "2026-12-31",
+   "winners": [
+    {
+     "storeId": "14141375",
+     "name": "복권명가",
+     "address": "경기 시흥시 능곡로 174 106호",
+     "lat": 37.368054,
+     "lng": 126.81172,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140946",
+     "name": "스카이통신",
+     "address": "경기 의정부시 시민로 지하 100 198,212,213,214,215호 서부광장 나열(의정부동,의정부지하상가)",
+     "lat": 37.73838,
+     "lng": 127.04645,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "천하으뜸편의점",
+     "address": "경기 안산시 단원구 원선로 49 101호",
+     "lat": 37.334738,
+     "lng": 126.801473,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14100283",
+     "name": "코코블루",
+     "address": "경기 성남시 분당구 서현로210번길 20 코코프라자지하2호",
+     "lat": 37.385939,
+     "lng": 127.12409,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14840528",
+     "name": "씨스페이스 어방점",
+     "address": "경남 김해시 인제로170번길 15-6 편의점 내",
+     "lat": 35.244053,
+     "lng": 128.9058,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140357",
+     "name": "갑부복권판매점",
+     "address": "서울 용산구 대사관로 80",
+     "lat": 37.533065,
+     "lng": 127.00686,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11110229",
+     "name": "고경식품",
+     "address": "서울 구로구 경인로 381",
+     "lat": 37.496822,
+     "lng": 126.86249,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140569",
+     "name": "독수리복권",
+     "address": "서울 서대문구 연희로 87 1층",
+     "lat": 37.566112,
+     "lng": 126.93004,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140705",
+     "name": "인생식물가게",
+     "address": "서울 종로구 삼일대로30길 28 1층",
+     "lat": 37.574111,
+     "lng": 126.98919,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14510011",
+     "name": "행운복권방 보생당건강원",
+     "address": "전북 익산시 무왕로 1268",
+     "lat": 35.960347,
+     "lng": 126.99724,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 2051,
+   "product": "SP1000",
+   "round": 100,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2026-01-15"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-10-15",
+   "saleEndDate": "2025-12-31",
+   "payEndDate": "2026-12-31",
+   "winners": [
+    {
+     "storeId": "14240105",
+     "name": "대복로또",
+     "address": "강원 원주시 나비허리길 120-19 1층",
+     "lat": 37.319632,
+     "lng": 127.96207,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74167212",
+     "name": "GS25팔탄해창리점",
+     "address": "경기 화성시 만세구 3.1만세로 655 1층",
+     "lat": 37.108306,
+     "lng": 126.871242,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14130187",
+     "name": "동탄 반송 복권방",
+     "address": "경기 화성시 동탄구 동탄반송3길 68 103호",
+     "lat": 37.210534,
+     "lng": 127.0682,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140468",
+     "name": "복권판매점(행복드림)",
+     "address": "경기 양평군 강남로 1016 나동 4호",
+     "lat": 37.480452,
+     "lng": 127.48493,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14190239",
+     "name": "한방복권방",
+     "address": "경기 화성시 병점구 용주로 25",
+     "lat": 37.205192,
+     "lng": 127.01398,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14100744",
+     "name": "황금대박복권슈퍼",
+     "address": "경기 안산시 단원구 선이로 14",
+     "lat": 37.342359,
+     "lng": 126.80363,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12600007",
+     "name": "노다지복권방",
+     "address": "부산 북구 덕천로 287",
+     "lat": 35.20986,
+     "lng": 129.03535,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640788",
+     "name": "명지로또",
+     "address": "부산 강서구 명지국제8로 234 정우빌딩 1층",
+     "lat": 35.097899,
+     "lng": 128.918387,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140823",
+     "name": "소망",
+     "address": "서울 노원구 한글비석로 384 대호프라자 110호",
+     "lat": 37.659808,
+     "lng": 127.07323,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "제일복권",
+     "address": "제주 제주시 서광로 253-1 1층",
+     "lat": 33.500064,
+     "lng": 126.523623,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 2030,
+   "product": "SP1000",
+   "round": 99,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-11-05"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-09-12",
+   "saleEndDate": "2025-11-30",
+   "payEndDate": "2026-11-30",
+   "winners": [
+    {
+     "storeId": "14130090",
+     "name": "밤가시복권방",
+     "address": "경기 고양시 일산동구 일산로 428 101호",
+     "lat": 37.673008,
+     "lng": 126.7792,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142215",
+     "name": "믿음로또복권",
+     "address": "경기 안산시 상록구 본삼로 44 월드상가2동 111호",
+     "lat": 37.3007,
+     "lng": 126.86489,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14800028",
+     "name": "새롬(GS25마산새롬점)",
+     "address": "경남 창원시 마산합포구 수산1길 181 새롬미리내상가113호",
+     "lat": 35.202969,
+     "lng": 128.58013,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14840669",
+     "name": "도항로또",
+     "address": "경남 함안군 함마대로 1499-1 1층",
+     "lat": 35.275601,
+     "lng": 128.39955,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14790040",
+     "name": "평화슈퍼",
+     "address": "경북 경주시 안강중앙로 219 좌측상가",
+     "lat": 35.992435,
+     "lng": 129.22409,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "온천로또방",
+     "address": "대전 유성구 계룡로 97 CJ나인파크 101-3호",
+     "lat": 36.353666,
+     "lng": 127.341581,
+     "inStoreList": false
+    },
+    {
+     "storeId": "11100163",
+     "name": "천하명당복권방",
+     "address": "서울 은평구 은평로 51 1층",
+     "lat": 37.598776,
+     "lng": 126.91345,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12800069",
+     "name": "복권전문점",
+     "address": "인천 부평구 원적로 437",
+     "lat": 37.503708,
+     "lng": 126.71512,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14640016",
+     "name": "제일로또",
+     "address": "전남광주 영암군 예향로 2542-1 신북터미널",
+     "lat": 34.888061,
+     "lng": 126.6901,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "본스튜디오",
+     "address": "제주 제주시 하귀로 111 1층",
+     "lat": 33.48361,
+     "lng": 126.407825,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 1990,
+   "product": "SP1000",
+   "round": 98,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-20",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-10-31"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 0,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-08-04",
+   "saleEndDate": "2025-11-30",
+   "payEndDate": "2026-11-30",
+   "winners": [
+    {
+     "storeId": "14190163",
+     "name": "행운복권방",
+     "address": "경기 포천시 솔모루로 86-1",
+     "lat": 37.828831,
+     "lng": 127.14752,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142756",
+     "name": "금빛복권",
+     "address": "경기 하남시 신장로 122",
+     "lat": 37.538071,
+     "lng": 127.2048,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14830042",
+     "name": "고현시장만남의광장복권방",
+     "address": "경남 거제시 거제중앙로19길 8 102호",
+     "lat": 34.885797,
+     "lng": 128.62365,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12740255",
+     "name": "로또 명당(용산네거리점)",
+     "address": "대구 달서구 달구벌대로 1504 1층 복권방",
+     "lat": 35.849236,
+     "lng": 128.53152,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "최강로또방",
+     "address": "대전 동구 우암로 325 1층 최강로또방",
+     "lat": 36.348314,
+     "lng": 127.450748,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12600081",
+     "name": "행운복권방",
+     "address": "부산 부산진구 동평로 115",
+     "lat": 35.166267,
+     "lng": 129.04196,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141472",
+     "name": "행운모아 복권판매점",
+     "address": "서울 은평구 응암로 294 1층",
+     "lat": 37.597682,
+     "lng": 126.92062,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12820001",
+     "name": "지에스25 강화스마일점",
+     "address": "인천 강화군 마니산로 65 (6호)GS편의점",
+     "lat": 37.639714,
+     "lng": 126.48547,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14540159",
+     "name": "종합로또",
+     "address": "전북 정읍시 학산로 127-31",
+     "lat": 35.556961,
+     "lng": 126.87354,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14940059",
+     "name": "복제비복권방",
+     "address": "제주 제주시 화남로 53",
+     "lat": 33.513335,
+     "lng": 126.56372,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1930,
+   "product": "SP1000",
+   "round": 97,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-06",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-09-12"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 1,
+     "asOf": "2026-11-06"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-06-30",
+   "saleEndDate": "2025-10-31",
+   "payEndDate": "2026-10-31",
+   "winners": [
+    {
+     "storeId": null,
+     "name": "훼미리복권",
+     "address": "경기 안산시 상록구 월피로  A동 18호",
+     "lat": 37.330959,
+     "lng": 126.848892,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14840428",
+     "name": "구산복권방",
+     "address": "경남 김해시 가락로 291 107호",
+     "lat": 35.250892,
+     "lng": 128.872208,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14820023",
+     "name": "로또양산역점",
+     "address": "경남 양산시 양산역6길 3 112호 (중부동, 센트럴스위트)",
+     "lat": 35.33782,
+     "lng": 129.0266,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14740223",
+     "name": "대박로또복권판매점",
+     "address": "경북 포항시 남구 상대로 112 1층",
+     "lat": 36.01369,
+     "lng": 129.35857,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12790016",
+     "name": "토토닷컴",
+     "address": "대구 달성군 논공중앙로 166",
+     "lat": 35.729472,
+     "lng": 128.45326,
+     "inStoreList": true
+    },
+    {
+     "storeId": "71168714",
+     "name": "GS25장위사거리점",
+     "address": "서울 성북구 돌곶이로 134 1층",
+     "lat": 37.614411,
+     "lng": 127.05344,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140884",
+     "name": "꿀팁 복권명당",
+     "address": "서울 서초구 과천대로 946 1층7호",
+     "lat": 37.4749,
+     "lng": 126.98213,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11142078",
+     "name": "삼정슈퍼",
+     "address": "서울 서대문구 거북골로 7 1층 삼정슈퍼",
+     "lat": 37.581044,
+     "lng": 126.92632,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14540254",
+     "name": "사자복권방",
+     "address": "전북 전주시 덕진구 팽나무4길 13 1층",
+     "lat": 35.835367,
+     "lng": 127.1546,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "대일복권",
+     "address": "전북 전주시 덕진구 쪽구름3길 46 상가동 207호",
+     "lat": 35.825968,
+     "lng": 127.160649,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 1910,
+   "product": "SP1000",
+   "round": 96,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-11-06",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-08-29"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 2,
+     "asOf": "2026-11-06"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-05-30",
+   "saleEndDate": "2025-10-31",
+   "payEndDate": "2026-10-31",
+   "winners": [
+    {
+     "storeId": "14120003",
+     "name": "고양월드식품복권",
+     "address": "경기 고양시 덕양구 혜음로 8 삼라마이다스프라자 제1층 제115호",
+     "lat": 37.70108,
+     "lng": 126.90182,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14142157",
+     "name": "망포역 로또복권방",
+     "address": "경기 수원시 영통구 덕영대로 1478 1동 114호",
+     "lat": 37.245165,
+     "lng": 127.05248,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14840598",
+     "name": "일등복권",
+     "address": "경남 합천군 동서로 95 1층 GS편의점내",
+     "lat": 35.566676,
+     "lng": 128.16281,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14710074",
+     "name": "로또판매점",
+     "address": "경북 상주시 상서문로 59",
+     "lat": 36.415231,
+     "lng": 128.15586,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "시장복권방",
+     "address": "부산 부산진구 서면로 65 1층",
+     "lat": 35.156683,
+     "lng": 129.05754,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12600218",
+     "name": "이마트24 광안리굿-7",
+     "address": "부산 수영구 광안로 49",
+     "lat": 35.155287,
+     "lng": 129.11766,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101668",
+     "name": "그랜드마트앞가판점",
+     "address": "서울 마포구 신촌로 96-1 신촌 전철역 7번출구앞 가판점",
+     "lat": 37.554931,
+     "lng": 126.93632,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100687",
+     "name": "한양슈퍼복권",
+     "address": "서울 성북구 지봉로24길 65",
+     "lat": 37.582344,
+     "lng": 127.02048,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11190193",
+     "name": "행복슈퍼",
+     "address": "서울 성북구 동소문로 49",
+     "lat": 37.591021,
+     "lng": 127.01114,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14500149",
+     "name": "동아전업사",
+     "address": "전북 전주시 덕진구 기린대로 691-2",
+     "lat": 35.852911,
+     "lng": 127.1058,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1870,
+   "product": "SP1000",
+   "round": 95,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-10-02",
+   "issued": 50000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 10,
+     "remaining": 0,
+     "asOf": "2025-06-27"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 50,
+     "remaining": 1,
+     "asOf": "2026-10-02"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-05-02",
+   "saleEndDate": "2025-09-30",
+   "payEndDate": "2026-09-30",
+   "winners": [
+    {
+     "storeId": null,
+     "name": "7동천하명당복권방",
+     "address": "경기 안양시 만안구 덕천로128번길  1층",
+     "lat": 37.390721,
+     "lng": 126.93413,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14140860",
+     "name": "대박명당",
+     "address": "경기 양주시 옥정동로5길 6 1층",
+     "lat": 37.81649,
+     "lng": 127.09872,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14130185",
+     "name": "화랑로또판매점",
+     "address": "경기 화성시 만세구 푸른들판로 660",
+     "lat": 37.167465,
+     "lng": 126.89569,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12740426",
+     "name": "이마트24 혁신원룸점",
+     "address": "대구 동구 이노밸리로42길 10-24 1층",
+     "lat": 35.878168,
+     "lng": 128.71847,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12640726",
+     "name": "행운로또 다대",
+     "address": "부산 사하구 다대로 704-1 1층 상가동 117호",
+     "lat": 35.04885,
+     "lng": 128.96479,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141148",
+     "name": "대박복권방",
+     "address": "서울 광진구 면목로 174",
+     "lat": 37.568672,
+     "lng": 127.08298,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "유성기획",
+     "address": "서울 송파구 올림픽로32길 51 1층",
+     "lat": 37.51256,
+     "lng": 127.11187,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14900007",
+     "name": "빙고복권방 잉크충전방",
+     "address": "제주 제주시 남녕로 36 영진그린빌라102호",
+     "lat": 33.490921,
+     "lng": 126.48087,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14940016",
+     "name": "함덕대박복권판매점",
+     "address": "제주 제주시 함덕18길 19",
+     "lat": 33.539485,
+     "lng": 126.67022,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14310027",
+     "name": "서울로또방",
+     "address": "충북 옥천군 삼금로 8",
+     "lat": 36.299557,
+     "lng": 127.56668,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1850,
+   "product": "SP1000",
+   "round": 94,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-10-02",
+   "issued": 45000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 9,
+     "remaining": 0,
+     "asOf": "2025-05-27"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 45,
+     "remaining": 0,
+     "asOf": "2026-10-02"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-04-07",
+   "saleEndDate": "2025-09-30",
+   "payEndDate": "2026-09-30",
+   "winners": [
+    {
+     "storeId": "14110105",
+     "name": "로또휴게실",
+     "address": "경기 용인시 기흥구 용구대로 1885",
+     "lat": 37.256442,
+     "lng": 127.10428,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "행운슈퍼복권사는날",
+     "address": "경기 부천시 소사구 경인로 148 1층",
+     "lat": 37.483721,
+     "lng": 126.771808,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14810083",
+     "name": "상남로또방",
+     "address": "경남 밀양시 상남로 1147 상남농약사",
+     "lat": 35.458393,
+     "lng": 128.751321,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14790020",
+     "name": "왕대박복권방",
+     "address": "경북 문경시 중앙로 15",
+     "lat": 36.588101,
+     "lng": 128.19294,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12700079",
+     "name": "복권명당(서부점)",
+     "address": "대구 달서구 월배로 452",
+     "lat": 35.833618,
+     "lng": 128.55478,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12600054",
+     "name": "부일카서비스",
+     "address": "부산 동구 자성로133번길 35",
+     "lat": 35.140055,
+     "lng": 129.06305,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100138",
+     "name": "노다지 노원역점 복권방",
+     "address": "서울 노원구 상계로 78",
+     "lat": 37.656228,
+     "lng": 127.06375,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11141092",
+     "name": "복주머니 복권판매점",
+     "address": "서울 강북구 한천로 1048 1층",
+     "lat": 37.640819,
+     "lng": 127.02599,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14910011",
+     "name": "환타지아복권방",
+     "address": "제주 제주시 번영로 518 대기마트 내",
+     "lat": 33.489169,
+     "lng": 126.59648,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1810,
+   "product": "SP1000",
+   "round": 93,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-09-04",
+   "issued": 45000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 9,
+     "remaining": 0,
+     "asOf": "2025-05-07"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 45,
+     "remaining": 1,
+     "asOf": "2026-09-04"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-03-07",
+   "saleEndDate": "2025-08-31",
+   "payEndDate": "2026-08-31",
+   "winners": [
+    {
+     "storeId": "14240071",
+     "name": "스무숲로또",
+     "address": "강원 춘천시 안마산로 350 1층",
+     "lat": 37.850543,
+     "lng": 127.74913,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74860126",
+     "name": "CU상남피아노점",
+     "address": "경남 창원시 성산구 마디미로21번길 17 1층",
+     "lat": 35.221685,
+     "lng": 128.68622,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74860337",
+     "name": "녹산할인마트",
+     "address": "경남 창원시 진해구 용원로7번길 18 1층",
+     "lat": 35.101894,
+     "lng": 128.81093,
+     "inStoreList": true
+    },
+    {
+     "storeId": "73060069",
+     "name": "GS25대전낭월점",
+     "address": "대전 동구 산내로1305번길 1 1층",
+     "lat": 36.279863,
+     "lng": 127.468062,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11140694",
+     "name": "꿈이있는 로또점(복권판매점)",
+     "address": "서울 은평구 통일로 699 1층",
+     "lat": 37.60838,
+     "lng": 126.93146,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "스파",
+     "address": "서울 노원구 노원로 564 111호",
+     "lat": 37.661554,
+     "lng": 127.05626,
+     "inStoreList": false
+    },
+    {
+     "storeId": "12810141",
+     "name": "우리복권",
+     "address": "인천 남동구 논고개로123번길 17 109호",
+     "lat": 37.401684,
+     "lng": 126.72308,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "로또만사통사",
+     "address": "전남광주 화순군  1 212",
+     "lat": 35.063692,
+     "lng": 126.992663,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14910018",
+     "name": "행운복권방",
+     "address": "제주 제주시 우정로11길 12",
+     "lat": 33.487662,
+     "lng": 126.43214,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1790,
+   "product": "SP1000",
+   "round": 92,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-08-07",
+   "issued": 45000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 9,
+     "remaining": 0,
+     "asOf": "2025-03-28"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 45,
+     "remaining": 1,
+     "asOf": "2026-08-07"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-02-11",
+   "saleEndDate": "2025-07-31",
+   "payEndDate": "2026-07-31",
+   "winners": [
+    {
+     "storeId": "14840234",
+     "name": "복권판매",
+     "address": "경남 창원시 마산합포구 3·15대로 17 1층",
+     "lat": 35.181742,
+     "lng": 128.55871,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14740123",
+     "name": "로또명당 왜관점",
+     "address": "경북 칠곡군 중앙로 217-1",
+     "lat": 35.994456,
+     "lng": 128.39891,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14740208",
+     "name": "로또명당",
+     "address": "경북 의성군 중앙길 10-1 1층",
+     "lat": 36.345303,
+     "lng": 128.69848,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14710048",
+     "name": "로또복권애니타임점",
+     "address": "경북 구미시 인동중앙로11길 24 애니타임편의점 내",
+     "lat": 36.109028,
+     "lng": 128.42,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11100305",
+     "name": "승보슈퍼",
+     "address": "서울 중구 마장로9길 49-19 1층",
+     "lat": 37.570168,
+     "lng": 127.01839,
+     "inStoreList": true
+    },
+    {
+     "storeId": "11101602",
+     "name": "평안당",
+     "address": "서울 종로구 종로 219",
+     "lat": 37.571222,
+     "lng": 127.00217,
+     "inStoreList": true
+    },
+    {
+     "storeId": "13100082",
+     "name": "수암완구",
+     "address": "울산 남구 수암로 118",
+     "lat": 35.528076,
+     "lng": 129.32019,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14540182",
+     "name": "당첨복권",
+     "address": "전북 익산시 무왕로 1278",
+     "lat": 35.960525,
+     "lng": 126.99848,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14540102",
+     "name": "대광복권판매점",
+     "address": "전북 장수군 한들로 64",
+     "lat": 35.732475,
+     "lng": 127.57973,
+     "inStoreList": true
+    }
+   ]
+  },
+  {
+   "id": 1750,
+   "product": "SP1000",
+   "round": 91,
+   "price": 1000,
+   "status": "ended",
+   "stockRate": 100,
+   "stockDate": "2026-07-03",
+   "issued": 45000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 500000000,
+     "total": 9,
+     "remaining": 0,
+     "asOf": "2025-03-27"
+    },
+    {
+     "rank": 2,
+     "amount": 20000000,
+     "total": 45,
+     "remaining": 1,
+     "asOf": "2026-07-03"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": "notRecommended",
+   "lowStock": false,
+   "saleStartDate": "2025-01-13",
+   "saleEndDate": "2025-06-30",
+   "payEndDate": "2026-06-30",
+   "winners": [
+    {
+     "storeId": "14141040",
+     "name": "대박로또",
+     "address": "경기 가평군 중앙로 35 1층",
+     "lat": 37.827384,
+     "lng": 127.51573,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14141535",
+     "name": "신흥복권나라",
+     "address": "경기 의정부시 흥선로 24 1층 신흥전기",
+     "lat": 37.745971,
+     "lng": 127.03095,
+     "inStoreList": true
+    },
+    {
+     "storeId": "74162174",
+     "name": "약대매표소",
+     "address": "경기 부천시 원미구 수도로 70 매표소",
+     "lat": 37.514495,
+     "lng": 126.774057,
+     "inStoreList": true
+    },
+    {
+     "storeId": "14140823",
+     "name": "행복한동행 풍차열쇠도장",
+     "address": "경기 안산시 상록구 시낭로2길 1 107호",
+     "lat": 37.335201,
+     "lng": 126.85313,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "황금터복권판매점",
+     "address": "경기 부천시 소사구 중동로70번길 15 1층103호",
+     "lat": 37.486304,
+     "lng": 126.765392,
+     "inStoreList": false
+    },
+    {
+     "storeId": "14700072",
+     "name": "성심상회",
+     "address": "경북 포항시 북구 불종로 78",
+     "lat": 36.038145,
+     "lng": 129.368,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12710129",
+     "name": "일등복권편의점",
+     "address": "대구 달서구 대명천로 220 1층",
+     "lat": 35.842204,
+     "lng": 128.53619,
+     "inStoreList": true
+    },
+    {
+     "storeId": "12610223",
+     "name": "백금당",
+     "address": "부산 중구 중구로29번길 26",
+     "lat": 35.100521,
+     "lng": 129.02653,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "DC백화점",
+     "address": "전남 여수시 신월로 689 1층",
+     "lat": 34.732538,
+     "lng": 127.71822,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 2231,
+   "product": "SP500",
+   "round": 48,
+   "price": 500,
+   "status": "active",
+   "stockRate": 62,
+   "stockDate": "2026-11-20",
+   "issued": 20000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 200000000,
+     "total": 5,
+     "remaining": 3,
+     "asOf": "2026-08-10"
+    },
+    {
+     "rank": 2,
+     "amount": 1000000,
+     "total": 100,
+     "remaining": 45,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": 1.543,
+   "score": 77.2,
+   "grade": "good",
+   "lowStock": false,
+   "saleStartDate": "2025-12-29",
+   "saleEndDate": "2026-12-31",
+   "payEndDate": "2027-12-31",
+   "winners": [
+    {
+     "storeId": "14290019",
+     "name": "왕대박복권전문점",
+     "address": "강원 동해시 중앙로 234 이주민상가1층18호",
+     "lat": 37.521491,
+     "lng": 129.11508,
+     "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "운수대통",
+     "address": "전남광주 광산구 어등대로 581-1 1층",
+     "lat": 35.151308,
+     "lng": 126.786159,
+     "inStoreList": false
+    }
+   ]
+  },
+  {
+   "id": 1970,
+   "product": "SP500",
+   "round": 47,
+   "price": 500,
+   "status": "ended",
+   "stockRate": 70,
+   "stockDate": "2026-11-20",
+   "issued": 8000000,
+   "prizes": [
+    {
+     "rank": 1,
+     "amount": 200000000,
+     "total": 2,
+     "remaining": 2,
+     "asOf": "2026-11-20"
+    },
+    {
+     "rank": 2,
+     "amount": 1000000,
+     "total": 40,
+     "remaining": 19,
+     "asOf": "2026-11-20"
+    }
+   ],
+   "index": null,
+   "score": null,
+   "grade": null,
+   "lowStock": false,
+   "saleStartDate": "2025-07-11",
+   "saleEndDate": "2025-12-31",
+   "payEndDate": "2026-12-31",
+   "winners": []
+  }
+ ]
+}
