@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-26T14:38:57+09:00",
+ "generatedAt": "2026-11-26T21:19:54+09:00",
  "stockDate": "2026-11-20",
  "rounds": [
   {
@@ -17,8 +17,8 @@
      "rank": 1,
      "amount": 1000000000,
      "total": 8,
-     "remaining": 4,
-     "asOf": "2026-11-20"
+     "remaining": 2,
+     "asOf": "2026-11-26"
     },
     {
      "rank": 2,
@@ -28,9 +28,9 @@
      "asOf": "2026-11-11"
     }
    ],
-   "index": 1.442,
-   "score": 72.1,
-   "grade": "good",
+   "index": 0.908,
+   "score": 45.4,
+   "grade": "normal",
    "lowStock": false,
    "saleStartDate": "2026-09-23",
    "saleEndDate": "2026-12-31",
@@ -51,6 +51,22 @@
      "lat": 37.295992,
      "lng": 126.99328,
      "inStoreList": true
+    },
+    {
+     "storeId": null,
+     "name": "GS25구미봉산점",
+     "address": "경북 구미시 임봉길 6-1 1층",
+     "lat": 36.106999,
+     "lng": 128.337709,
+     "inStoreList": false
+    },
+    {
+     "storeId": null,
+     "name": "GS25구미봉산점",
+     "address": "경북 구미시 임봉길 6-1 1층",
+     "lat": 36.106999,
+     "lng": 128.337709,
+     "inStoreList": false
     },
     {
      "storeId": "12710129",
