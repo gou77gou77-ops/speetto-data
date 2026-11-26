@@ -1,9 +1,12 @@
 name: stores
 
 # 전국 판매점(스피또 판매점만) → gh-pages의 stores.json. 끝까지 다 받았을 때만 바꾼다
+#
+# 예약 실행 없음: GitHub 러너(해외 IP)에서는 동행복권이 요청의 절반가량에 응답하지 않아
+# 전국 수집(약 1,448번 요청)을 끝낼 수 없다(2026-11-26 시험: 38쪽, 54분 만에 끊김).
+# 매주 일요일 03:00 수집은 내 PC의 Windows 작업 스케줄러가 run_collector_local.ps1로 한다.
+# 이 워크플로는 손으로 시험할 때만 쓴다.
 on:
-  schedule:
-    - cron: "0 18 * * 6" # 일요일 03:00 KST (토요일 18:00 UTC)
   workflow_dispatch:
 
 permissions:

@@ -526,6 +526,88 @@ class RoundsTest(unittest.TestCase):
             self.assertIn("접속 차단", log)
             self.assertEqual(out.read_text(encoding="utf-8"), "old")
 
+    def incremental_client(self):
+        """회차 2개: 5808(판매중), 5700(판매종료). 요청 경로·키를 기록한다."""
+        ended_item = dict(ITEM_70, ntslWnSn=5700, stEpsd=60, ntslStatus="판매종료")
+        seen = []
+
+        def r(path, params):
+            seen.append((path, params.get("ntslWnSn") or params.get("srchLtEpsd")))
+            if path == rounds.LIST_PATH:
+                return {"data": {"total": 2, "list": [ITEM_70, ended_item]}}
+            if path == rounds.DETAIL_PATH:
+                if params["ntslWnSn"] == 5700:
+                    return {"data": {"result": detail_70(ntslStatus="판매종료", stSpmtRt=100, stEpsd=60)}}
+                return {"data": {"result": detail_70()}}
+            return {"data": {"list": [winner_row()]}}
+        client = RoutedClient(r)
+        client.seen = seen
+        return client
+
+    def first_run(self):
+        c = self.incremental_client()
+        doc = rounds.collect(c, [STORE], None, log=lambda m: None)
+        return doc, c
+
+    def test_first_run_fetches_everything(self):
+        doc, c = self.first_run()
+        self.assertEqual(c.request_count, 1 + 2 + 2)  # 목록 + 상세 2 + 배출점 2
+        self.assertEqual({r["id"]: r["status"] for r in doc["rounds"]}, {5808: "active", 5700: "ended"})
+
+    def test_reuses_ended_rounds_from_previous_file(self):
+        prev, _ = self.first_run()
+        prev = json.loads(json.dumps(prev))
+        ended = next(r for r in prev["rounds"] if r["id"] == 5700)
+        ended["winners"][0]["name"] = "지난 파일 값"
+        c = self.incremental_client()
+        logs = []
+        doc = rounds.collect(c, [STORE], None, log=logs.append, prev=prev)
+        self.assertEqual(c.request_count, 1 + 1 + 1)  # 목록 + 판매중 상세 + 판매중 배출점
+        self.assertNotIn((rounds.DETAIL_PATH, 5700), c.seen)
+        self.assertNotIn((rounds.WINNERS_PATH, 60), c.seen)
+        reused = next(r for r in doc["rounds"] if r["id"] == 5700)
+        self.assertEqual(reused["winners"][0]["name"], "지난 파일 값")
+        self.assertTrue(any("판매종료 1개는 지난 파일 값 재사용, 1개 새로 받음" in m for m in logs))
+        validate_rounds(doc)
+
+    def test_newly_ended_round_is_fetched(self):
+        prev, _ = self.first_run()
+        prev = json.loads(json.dumps(prev))
+        for r in prev["rounds"]:
+            if r["id"] == 5700:  # 지난번엔 아직 판매중이었다
+                r.update(status="active", score=50.0, index=1.0, grade="normal")
+        c = self.incremental_client()
+        rounds.collect(c, [STORE], None, log=lambda m: None, prev=prev)
+        self.assertIn((rounds.DETAIL_PATH, 5700), c.seen)
+        self.assertEqual(c.request_count, 5)
+
+    def test_reused_winner_leaves_store_list(self):
+        prev, _ = self.first_run()
+        prev = json.loads(json.dumps(prev))
+        other_store = dict(STORE, id="99999999")
+        doc = rounds.collect(self.incremental_client(), [other_store], None, log=lambda m: None, prev=prev)
+        w = next(r for r in doc["rounds"] if r["id"] == 5700)["winners"][0]
+        self.assertEqual((w["storeId"], w["inStoreList"]), (None, False))
+        self.assertEqual(w["name"], "CU우면한라점")
+
+    def test_broken_previous_file_means_full_fetch(self):
+        c = self.incremental_client()
+        logs = []
+        rounds.collect(c, [STORE], None, log=logs.append, prev={"rounds": "x"})
+        self.assertEqual(c.request_count, 5)
+        self.assertTrue(any("전부 새로 받는다" in m for m in logs))
+
+    def test_main_uses_out_file_as_previous(self):
+        with tempfile.TemporaryDirectory() as d:
+            stores_doc = {"total": 1, "stores": [STORE]}
+            code, out, _ = self.run_main(d, self.incremental_client(), stores_doc)
+            self.assertEqual(code, 0)
+            c = self.incremental_client()
+            code, out, log = self.run_main(d, c, stores_doc)
+            self.assertEqual(code, 0, log)
+            self.assertEqual(c.request_count, 3)
+            self.assertIn("걸린 시간", log)
+
     def test_missing_stores_json(self):
         with tempfile.TemporaryDirectory() as d:
             code, out, log = self.run_main(d, self.routes(), None)

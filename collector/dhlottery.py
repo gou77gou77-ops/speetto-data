@@ -80,7 +80,8 @@ def describe_network_error(e: BaseException) -> str:
     if isinstance(reason, socket.gaierror):
         return f"DNS 조회 실패 ({reason}). 러너의 네트워크나 DNS 문제"
     if isinstance(reason, (socket.timeout, TimeoutError)):
-        return "응답 시간 초과. 해외 IP를 조용히 막는 경우 이렇게 보인다"
+        return ("응답 시간 초과. 동행복권이 이 IP를 조용히 막을 때(해외 IP, 짧은 시간에 요청이 많을 때) "
+                "이렇게 보인다. 막히면 30~40분쯤 접속 자체가 안 된다")
     if isinstance(reason, ConnectionRefusedError):
         return "연결 거부. 접속 차단으로 보인다"
     if isinstance(reason, ConnectionResetError):

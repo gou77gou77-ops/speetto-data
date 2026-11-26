@@ -15,6 +15,7 @@ collector/
   stores.py       전국 판매점 → stores.json (시군구 하나만 받는 시험 옵션)
   scoring.py      오라클 지수, 상태(active/endgame/ended), 라벨(grade) — 점수 규칙의 기준
   contract.py     출력 형식 검사. 어긋나면 파일을 쓰지 않는다
+  verify.py       올리기 전에 공개 파일을 다시 검사 (내 PC 스크립트가 씀)
   dhlottery.py    요청 공통: User-Agent, 요청 간격(GitHub 3초 / 내 PC 1초), 재시도, 차단·형식 오류 구분
   juso.py         행안부 도로명주소 API 지오코딩 (키가 없으면 건너뜀)
   geo.py          좌표 범위, 거리, 도로명 비교, UTM-K → WGS84
@@ -22,17 +23,23 @@ collector/
 tests/            python -m unittest discover -s tests (동행복권을 부르지 않음)
 tests/fixtures/   2026-11-26 실제 수집 결과 (배출점·판매점 수만 줄임)
 public/config.json  앱 원격 설정. 손으로 고치는 유일한 공개 파일
+run_collector_local.ps1  내 PC에서 수집 → 검증 → gh-pages push (-Mode stores|rounds). 실패 시 1시간 뒤 최대 3번 재시도, 모두 실패하면 Windows 알림
+register_tasks.ps1  위 스크립트를 Windows 작업 스케줄러에 등록 (-DryRun, -IncludeRounds, -Unregister)
+logs/, .gh-pages/   내 PC 실행의 날짜별 로그, gh-pages 작업 폴더 (git에 올리지 않음)
 .github/workflows/  rounds.yml, stores.yml, test.yml
 requirements.txt  (지금은 표준 라이브러리만)
 ```
 
 ## 공개 파일 (gh-pages 브랜치 → GitHub Pages)
 
-| 파일 | 만드는 작업 | 주기 (KST) | cron (UTC) |
+| 파일 | 만드는 작업 | 어디서 | 주기 (KST) |
 |---|---|---|---|
-| `rounds_latest.json` | 회차 발행내역 + 점수 + 회차별 1등 배출점 | 매일 09:00, 18:00 | `0 0 * * *`, `0 9 * * *` |
-| `stores.json` | 전국 판매점 목록(스피또 판매점만) | 매주 일요일 03:00 | `0 18 * * 6` (토요일 18:00 UTC) |
+| `rounds_latest.json` | 회차 발행내역 + 점수 + 회차별 1등 배출점 | GitHub Actions `rounds` (cron `0 0 * * *`, `0 9 * * *`) | 매일 09:00, 18:00 |
+| `stores.json` | 전국 판매점 목록(스피또 판매점만) | **내 PC** 작업 스케줄러 `run_collector_local.ps1 -Mode stores` | 매주 일요일 03:00 |
 | `config.json` | `public/config.json`을 복사 | 위 작업이 돌 때마다 | — |
+
+- 판매점 전체 수집은 GitHub 러너(해외 IP)에서 끝까지 되지 않는다(2026-11-26 시험). `stores` 워크플로는 예약 없이 손으로 시험할 때만 쓴다. 설정: 앱 저장소 docs/github-setup.md 11절.
+- rounds는 지난 `rounds_latest.json`에서 **이미 판매종료였던 회차를 다시 요청하지 않고 그대로 쓴다.** 판매중·막바지·새 회차·이번에 판매종료된 회차만 상세와 1등 배출점을 받는다(보통 약 13번). 지난 파일이 없거나 형식 검사를 통과하지 못하면 전부 받는다(약 73번). `--full`로 강제할 수 있다. 다시 쓰는 회차의 배출점이 지금 판매점 목록에서 빠졌으면 `inStoreList: false`로 바꾼다.
 
 - 각 작업은 gh-pages 브랜치를 받아 **자기 파일만** 바꿔 커밋한다. 실패하면 커밋하지 않으므로 지난번 파일이 그대로 남는다.
 - 두 작업이 동시에 push하지 않도록 같은 `concurrency` 그룹을 쓴다.
@@ -53,7 +60,9 @@ requirements.txt  (지금은 표준 라이브러리만)
 python -m collector.check --target rounds        # 접속 확인 (stores도 있음)
 python -m collector.stores --sido 서울 --sigungu 서초구   # 시험: out/stores.sample.json (약 10초)
 python -m collector.stores                        # 전국: out/stores.json (내 PC 1초 간격 약 25분)
-python -m collector.rounds --stores out/stores.sample.json   # out/rounds_latest.json (약 75초)
+python -m collector.rounds --stores out/stores.sample.json   # out/rounds_latest.json (첫 실행 약 75초, 그다음은 판매종료 회차 재사용)
+python -m collector.verify out/rounds_latest.json public/config.json
+powershell -NoProfile -ExecutionPolicy Bypass -File .un_collector_local.ps1 -Mode stores   # 내 PC: 수집 → 검증 → push
 python -m unittest discover -s tests
 ```
 

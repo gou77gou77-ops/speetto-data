@@ -2,23 +2,29 @@
 
 실행:
     python -m collector.rounds --stores out/stores.json --out out/rounds_latest.json
+    python -m collector.rounds --full ...      # 지난 파일을 무시하고 전부 받기
 
 점수·상태·라벨은 scoring.py가 정한다. 1등 배출점은 --stores 판매점 목록과 짝을 짓는다.
+요청을 줄이려고 지난 파일(기본: --out 파일)에서 이미 판매종료였던 회차는 그대로 다시 쓴다.
+판매중·막바지 회차, 새 회차, 이번에 판매종료로 바뀐 회차만 상세와 1등 배출점을 받는다.
+지난 파일이 없거나 형식 검사를 통과하지 못하면 전부 받는다.
 모든 회차를 받고 형식 검사를 통과했을 때만 파일을 바꾼다.
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
-from .contract import validate_rounds
+from .contract import ContractError, validate_rounds
 from .dhlottery import BlockedError, Client, CollectError, FormatChangedError, user_agent_summary
 from .geo import distance_m, road_key, valid_coord
 from .juso import Geocoder
-from .output import gh_error, gh_warning, log, now_kst, read_json, write_json_atomic
+from .output import elapsed, gh_error, gh_warning, log, now_kst, read_json, write_json_atomic
 from .scoring import Prize, RoundInput, parse_amount, score_round
 
 LIST_PATH = "/st/selectPblcnDsctn.do"
@@ -207,16 +213,50 @@ def build_winner(row: dict[str, Any], index: StoreIndex, geocoder: Geocoder | No
     return {"storeId": None, "name": name, "address": address, "lat": lat, "lng": lng, "inStoreList": False}
 
 
+# ---------- 지난 파일 재사용 ----------
+
+def reusable_ended(prev: Any, log=log) -> dict[Any, dict[str, Any]]:
+    """지난 rounds_latest.json에서 판매종료 회차를 id별로. 지난 파일이 없거나 형식이 맞지 않으면 빈 dict."""
+    if not prev:
+        return {}
+    try:
+        validate_rounds(prev)
+    except (ContractError, KeyError, TypeError, ValueError) as e:
+        log(f"지난 rounds_latest.json이 형식 검사를 통과하지 못해 전부 새로 받는다: {e}")
+        return {}
+    return {r["id"]: r for r in prev["rounds"] if r["status"] == "ended"}
+
+
+def reuse_round(old: dict[str, Any], store_ids: set[Any]) -> dict[str, Any]:
+    """지난 값을 그대로 쓰되, 지금 판매점 목록에서 빠진 배출점은 '목록에 없음'으로 바꾼다."""
+    r = copy.deepcopy(old)
+    for w in r["winners"]:
+        if w["inStoreList"] and w["storeId"] not in store_ids:
+            w["storeId"], w["inStoreList"] = None, False
+    return r
+
+
 # ---------- 전체 ----------
 
-def collect(client: Client, stores: list[dict[str, Any]], geocoder: Geocoder | None, log=log) -> dict[str, Any]:
+def collect(client: Client, stores: list[dict[str, Any]], geocoder: Geocoder | None, log=log,
+            prev: Any = None) -> dict[str, Any]:
     items = fetch_list(client)
-    log(f"회차 {len(items)}개")
-    rounds = [build_round(item, fetch_detail(client, item["ntslWnSn"])) for item in items]
+    ended = reusable_ended(prev, log)
+    store_ids = {s["id"] for s in stores}
+    rounds, fetched = [], []
+    for item in items:
+        old = ended.get(item.get("ntslWnSn"))
+        if old is not None:
+            rounds.append(reuse_round(old, store_ids))
+            continue
+        r = build_round(item, fetch_detail(client, item["ntslWnSn"]))
+        rounds.append(r)
+        fetched.append(r)
+    log(f"회차 {len(items)}개: 판매종료 {len(rounds) - len(fetched)}개는 지난 파일 값 재사용, "
+        f"{len(fetched)}개 새로 받음 (요청 {client.request_count}번까지)")
 
-    log(f"회차 상세 {len(rounds)}개 받음, 요청 {client.request_count}번")
     index = StoreIndex(stores)
-    for r in rounds:
+    for r in fetched:
         r["winners"] = [build_winner(row, index, geocoder) for row in fetch_winners(client, r["product"], r["round"])]
 
     rounds.sort(key=lambda r: (list(PRODUCTS).index(r["product"]), -r["round"]))
@@ -235,6 +275,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="회차 + 1등 배출점 → rounds_latest.json")
     ap.add_argument("--out", default="out/rounds_latest.json")
     ap.add_argument("--stores", default="out/stores.json", help="짝지을 판매점 목록 (공개된 stores.json)")
+    ap.add_argument("--prev", help="판매종료 회차를 다시 쓸 지난 파일 (기본: --out 파일)")
+    ap.add_argument("--full", action="store_true", help="지난 파일을 무시하고 모든 회차를 받는다")
     args = ap.parse_args(argv)
     out = Path(args.out)
 
@@ -249,10 +291,20 @@ def main(argv: list[str] | None = None) -> int:
     if geocoder is None:
         gh_warning("지오코딩 건너뜀", "JUSO_API_KEY가 없어 좌표 없는 1등 배출점은 좌표 null로 둡니다")
 
+    prev = None
+    if not args.full:
+        try:
+            prev = read_json(args.prev or out)
+        except ValueError as e:
+            log(f"지난 파일을 읽지 못해 전부 새로 받는다: {e}")
+    if prev is None:
+        log("지난 rounds_latest.json 없음: 모든 회차를 받는다")
+
     client = Client()
     log(f"User-Agent: {user_agent_summary()}, 요청 간격 {client.min_interval:g}초")
+    start = time.monotonic()
     try:
-        doc = collect(client, stores_doc["stores"], geocoder)
+        doc = collect(client, stores_doc["stores"], geocoder, prev=prev)
     except BlockedError as e:
         gh_error("접속 차단", f"회차 수집 중 동행복권 접속 실패({client.request_count}번째 요청): {e}. {out}은 바꾸지 않았습니다")
         return 2
@@ -265,7 +317,7 @@ def main(argv: list[str] | None = None) -> int:
     log(f"저장: {out} — 회차 {len(doc['rounds'])}개, 1등 배출 {len(winners)}건 "
           f"(판매점 목록에 있음 {sum(w['inStoreList'] for w in winners)}, 없음 {sum(not w['inStoreList'] for w in winners)}, "
           f"좌표 없음 {sum(w['lat'] is None for w in winners)}), 기준 판매점 {stores_doc.get('total')}곳, "
-          f"출고율 기준 {doc['stockDate']}, 요청 {client.request_count}번")
+          f"출고율 기준 {doc['stockDate']}, 요청 {client.request_count}번, 걸린 시간 {elapsed(time.monotonic() - start)}")
     return 0
 
 
