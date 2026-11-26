@@ -144,7 +144,7 @@ function Publish-Pages([string]$File) {
     for ($i = 1; $i -le 3; $i++) {
         $c = Invoke-Logged 'git' @('-C', $Pages, 'push', '--quiet', 'origin', 'HEAD:gh-pages')
         if ($c -eq 0) { Write-Log 'gh-pages push 완료'; return 0 }
-        Write-Log "push 실패($i/3). GitHub의 rounds가 먼저 올렸을 수 있어 원격을 받아 다시 쌓는다"
+        Write-Log "push 실패($i/3). 다른 곳에서 gh-pages에 먼저 올렸을 수 있어 원격을 받아 다시 쌓는다"
         $c = Invoke-Logged 'git' @('-C', $Pages, 'pull', '--quiet', '--rebase', 'origin', 'gh-pages')
         if ($c -ne 0) { return $c }
     }

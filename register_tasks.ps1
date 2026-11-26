@@ -4,7 +4,8 @@
 
 .DESCRIPTION
   - stores: 매주 일요일 03:00
-  - rounds: 매일 09:00, 18:00 (-IncludeRounds를 줄 때만. GitHub의 rounds 워크플로를 쓰면 등록하지 않는다)
+  - rounds: 매일 09:00, 18:00 (-StoresOnly면 등록하지 않는다)
+  GitHub 러너(해외 IP)에서는 stores·rounds 모두 끝까지 받지 못해(2026-11-26 시험) 둘 다 내 PC에서 돈다.
   공통 설정:
   - 작업 실행을 위해 절전 모드 해제(WakeToRun). 실제로 깨우려면 전원 옵션의 "절전 모드 해제 타이머 허용"이 켜져 있어야 한다.
   - 놓친 실행은 PC가 켜지면 바로 실행(StartWhenAvailable)
@@ -18,13 +19,13 @@
 .EXAMPLE
   powershell -NoProfile -ExecutionPolicy Bypass -File .\register_tasks.ps1
 .EXAMPLE
-  powershell -NoProfile -ExecutionPolicy Bypass -File .\register_tasks.ps1 -IncludeRounds
+  powershell -NoProfile -ExecutionPolicy Bypass -File .\register_tasks.ps1 -StoresOnly
 .EXAMPLE
   powershell -NoProfile -ExecutionPolicy Bypass -File .\register_tasks.ps1 -Unregister
 #>
 [CmdletBinding()]
 param(
-    [switch]$IncludeRounds,
+    [switch]$StoresOnly,
     [switch]$Unregister,
     [switch]$DryRun
 )
@@ -91,13 +92,11 @@ function New-CollectorTask([string]$Mode, $Triggers, [string]$Description) {
 New-CollectorTask 'stores' @(New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At '03:00') `
     '스피또 오라클: 전국 판매점 → gh-pages stores.json. 실패하면 1시간 뒤 최대 3번 다시, 모두 실패하면 알림. 로그: logs\'
 
-if ($IncludeRounds) {
+if (-not $StoresOnly) {
     New-CollectorTask 'rounds' @(
         (New-ScheduledTaskTrigger -Daily -At '09:00'),
         (New-ScheduledTaskTrigger -Daily -At '18:00')
     ) '스피또 오라클: 회차 + 1등 배출점 → gh-pages rounds_latest.json. 실패하면 1시간 뒤 최대 3번 다시, 모두 실패하면 알림. 로그: logs\'
-} elseif (-not $DryRun -and (Get-ScheduledTask -TaskPath $TaskPath -TaskName 'rounds' -ErrorAction SilentlyContinue)) {
-    Write-Warning "rounds 작업이 이미 등록돼 있다. GitHub rounds 워크플로와 함께 돌지 않게 하려면 -Unregister 뒤 다시 등록한다"
 }
 
 if (-not $DryRun) {

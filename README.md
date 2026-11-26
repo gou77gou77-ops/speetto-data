@@ -24,7 +24,7 @@ tests/            python -m unittest discover -s tests (동행복권을 부르�
 tests/fixtures/   2026-11-26 실제 수집 결과 (배출점·판매점 수만 줄임)
 public/config.json  앱 원격 설정. 손으로 고치는 유일한 공개 파일
 run_collector_local.ps1  내 PC에서 수집 → 검증 → gh-pages push (-Mode stores|rounds). 실패 시 1시간 뒤 최대 3번 재시도, 모두 실패하면 Windows 알림
-register_tasks.ps1  위 스크립트를 Windows 작업 스케줄러에 등록 (-DryRun, -IncludeRounds, -Unregister)
+register_tasks.ps1  위 스크립트를 Windows 작업 스케줄러에 등록 (stores·rounds 둘 다. -DryRun, -StoresOnly, -Unregister)
 logs/, .gh-pages/   내 PC 실행의 날짜별 로그, gh-pages 작업 폴더 (git에 올리지 않음)
 .github/workflows/  rounds.yml, stores.yml, test.yml
 requirements.txt  (지금은 표준 라이브러리만)
@@ -34,23 +34,23 @@ requirements.txt  (지금은 표준 라이브러리만)
 
 | 파일 | 만드는 작업 | 어디서 | 주기 (KST) |
 |---|---|---|---|
-| `rounds_latest.json` | 회차 발행내역 + 점수 + 회차별 1등 배출점 | GitHub Actions `rounds` (cron `0 0 * * *`, `0 9 * * *`) | 매일 09:00, 18:00 |
+| `rounds_latest.json` | 회차 발행내역 + 점수 + 회차별 1등 배출점 | **내 PC** 작업 스케줄러 `run_collector_local.ps1 -Mode rounds` | 매일 09:00, 18:00 |
 | `stores.json` | 전국 판매점 목록(스피또 판매점만) | **내 PC** 작업 스케줄러 `run_collector_local.ps1 -Mode stores` | 매주 일요일 03:00 |
 | `config.json` | `public/config.json`을 복사 | 위 작업이 돌 때마다 | — |
 
-- 판매점 전체 수집은 GitHub 러너(해외 IP)에서 끝까지 되지 않는다(2026-11-26 시험). `stores` 워크플로는 예약 없이 손으로 시험할 때만 쓴다. 설정: 앱 저장소 docs/github-setup.md 11절.
-- rounds는 지난 `rounds_latest.json`에서 **이미 판매종료였던 회차를 다시 요청하지 않고 그대로 쓴다.** 판매중·막바지·새 회차·이번에 판매종료된 회차만 상세와 1등 배출점을 받는다(보통 약 13번). 지난 파일이 없거나 형식 검사를 통과하지 못하면 전부 받는다(약 73번). `--full`로 강제할 수 있다. 다시 쓰는 회차의 배출점이 지금 판매점 목록에서 빠졌으면 `inStoreList: false`로 바꾼다.
+- GitHub 러너(해외 IP)에서는 동행복권 응답이 자주 끊겨 판매점 전체도, 회차도 끝까지 받지 못했다(2026-11-26 시험: stores 38/1448쪽에서 54분, rounds 9번째 요청에서 7분 만에 실패). `stores`, `rounds` 워크플로는 예약 없이 손으로 시험할 때만 쓴다. 설정: 앱 저장소 docs/github-setup.md 11절.
+- rounds는 지난 `rounds_latest.json`에서 **이미 판매종료였던 회차를 다시 요청하지 않고 그대로 쓴다.** 판매중·막바지·새 회차·이번에 판매종료된 회차만 상세와 1등 배출점을 받는다(요청 수 = 1 + 다시 받는 회차 수 × 2. 2026-11-26에는 목록의 36개 회차가 모두 판매중이라 재사용할 회차가 없어 73번이었다). 지난 파일이 없거나 형식 검사를 통과하지 못하면 전부 받는다(약 73번). `--full`로 강제할 수 있다. 다시 쓰는 회차의 배출점이 지금 판매점 목록에서 빠졌으면 `inStoreList: false`로 바꾼다.
 
 - 각 작업은 gh-pages 브랜치를 받아 **자기 파일만** 바꿔 커밋한다. 실패하면 커밋하지 않으므로 지난번 파일이 그대로 남는다.
-- 두 작업이 동시에 push하지 않도록 같은 `concurrency` 그룹을 쓴다.
+- 내 PC의 두 작업은 같은 뮤텍스를 써서 동시에 돌지 않는다. 워크플로 두 개도 같은 `concurrency` 그룹이다.
 - 형식: 앱 저장소 docs/data-contract.md. 요청 주소와 응답 필드: docs/data-source.md.
 
 ## 수집 규칙
 
-- 동행복권 요청 간격은 **GitHub 러너 3초, 내 PC(self-hosted·로컬) 1초**가 기본이고 1초보다 짧게 할 수 없다. 바꾸려면 `COLLECTOR_INTERVAL`(초).
+- 동행복권 요청 간격은 **GitHub 러너 3초, 내 PC(self-hosted·로컬) 1초**가 기본이고 1초보다 짧게 할 수 없다. 바꾸려면 `COLLECTOR_INTERVAL`(초). 내 PC에서 1초로 전국 판매점을 받으면 약 255번 요청 뒤 그 IP가 30~40분 막힌다(2026-11-26). 작업 스케줄러로 돌릴 때는 사용자 환경 변수 `COLLECTOR_INTERVAL=3`을 넣는다(3초로 1453번 요청, 79분에 성공).
 - 응답 시간 초과가 나면 **60초 쉬고 같은 요청을 최대 3번** 다시 한다. 그 밖의 일시 오류(5xx, 연결 끊김)는 5초·10초 쉬고 다시 한다. 403·429·HTML 응답은 다시 하지 않는다.
 - User-Agent는 `SpeettoDataCollector/1.0 (com.susuim.speetto; <연락처>)`. 연락처는 코드에 적지 않고 저장소 **Secret** `COLLECTOR_CONTACT`에서 읽는다. 로그에는 연락처 값 대신 "연락처 설정됨/없음"만 남긴다(공개 저장소 로그는 누구나 본다).
-- 판매점 전체 목록(약 1,448번 요청, 3초 간격 약 75분 / 1초 간격 약 25분)은 **끝까지 다 받았을 때만** stores.json을 바꾼다. 중간에 하나라도 실패하면 지난주 파일을 유지한다.
+- 판매점 전체 목록(약 1,453번 요청, 3초 간격 약 80분)은 **끝까지 다 받았을 때만** stores.json을 바꾼다. 중간에 하나라도 실패하면 지난주 파일을 유지한다.
 - 좌표가 비었거나 한국 범위(위도 33~39, 경도 124~132) 밖인 판매점만 행안부 도로명주소 API로 좌표를 구한다. 키는 Actions secret `JUSO_API_KEY`. 행안부로도 못 찾으면 `lat`/`lng`를 null로 둔다(앱은 목록에만 표시). Nominatim 등 다른 지오코더는 쓰지 않는다.
 - 1등 배출점은 최신 stores.json과 **좌표 30 m 이내 + 도로명 주소 앞부분 일치**로 짝을 짓는다. 짝이 없으면 배출 데이터의 좌표를 쓰고 `inStoreList: false`("현재 판매점 목록에 없음").
 
@@ -59,7 +59,7 @@ requirements.txt  (지금은 표준 라이브러리만)
 ```
 python -m collector.check --target rounds        # 접속 확인 (stores도 있음)
 python -m collector.stores --sido 서울 --sigungu 서초구   # 시험: out/stores.sample.json (약 10초)
-python -m collector.stores                        # 전국: out/stores.json (내 PC 1초 간격 약 25분)
+python -m collector.stores                        # 전국: out/stores.json (3초 간격 약 80분)
 python -m collector.rounds --stores out/stores.sample.json   # out/rounds_latest.json (첫 실행 약 75초, 그다음은 판매종료 회차 재사용)
 python -m collector.verify out/rounds_latest.json public/config.json
 powershell -NoProfile -ExecutionPolicy Bypass -File .un_collector_local.ps1 -Mode stores   # 내 PC: 수집 → 검증 → push

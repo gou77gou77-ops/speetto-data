@@ -1,10 +1,10 @@
 name: rounds
 
 # 회차 목록 + 상세 + 회차별 1등 배출점 → gh-pages의 rounds_latest.json
+# 예약 실행은 끈다: GitHub 러너(해외 IP)는 동행복권 응답이 자주 끊긴다(2026-11-26 시험: 9번째 요청에서 실패).
+# 매일 09:00, 18:00 수집은 내 PC의 Windows 작업 스케줄러가 한다(run_collector_local.ps1 -Mode rounds).
+# 이 워크플로는 손으로 시험할 때만 쓴다.
 on:
-  schedule:
-    - cron: "0 0 * * *" # 09:00 KST
-    - cron: "0 9 * * *" # 18:00 KST
   workflow_dispatch:
 
 permissions:
