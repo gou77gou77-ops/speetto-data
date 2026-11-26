@@ -132,7 +132,9 @@ function Sync-Pages {
 
 function Publish-Pages([string]$File) {
     Copy-Item (Join-Path $Root 'public\config.json') (Join-Path $Pages 'config.json') -Force
-    $c = Invoke-Logged 'git' @('-C', $Pages, 'add', $File, 'config.json')
+    $files = @($File, 'config.json')
+    if ($Mode -eq 'rounds' -and (Test-Path (Join-Path $Pages 'history'))) { $files += 'history' }
+    $c = Invoke-Logged 'git' (@('-C', $Pages, 'add') + $files)
     if ($c -ne 0) { return $c }
     & git -C $Pages diff --cached --quiet
     if ($LASTEXITCODE -eq 0) { Write-Log '바뀐 것 없음. push하지 않는다'; return 0 }
@@ -191,6 +193,7 @@ function Invoke-Attempt($Py) {
     if ($c -ne 0) { return $c }
 
     $verifyArgs = @('-u', '-m', 'collector.verify', $out, (Join-Path $Root 'public\config.json'))
+    if ($Mode -eq 'rounds') { $verifyArgs += (Join-Path $Pages 'history') }
     $c = Invoke-Logged $Py.Exe ($Py.Prefix + $verifyArgs)
     if ($c -ne 0) { return $c }
     return Publish-Pages $Outputs[$Mode]

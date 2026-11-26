@@ -82,6 +82,9 @@ def validate_rounds(doc: dict[str, Any]) -> None:
         if prizes[0]["remaining"] == 0:
             _check(r["grade"] == GRADE_NOT_RECOMMENDED, w, "1등 0이면 notRecommended")
         _check(isinstance(r.get("lowStock"), bool), w, "lowStock")
+        if "historyUrl" in r:  # 2026-11-27부터. 그 전 파일에는 없다
+            _check(r["historyUrl"] is None or r["historyUrl"] == f"history/{r['product']}_{r['round']}.json",
+                   w, "historyUrl은 null 또는 history/<상품>_<회차>.json")
         winners = r.get("winners")
         _check(isinstance(winners, list), w, "winners")
         for x in winners:
@@ -111,3 +114,24 @@ def validate_stores(doc: dict[str, Any]) -> None:
         _check((s.get("coordSource") is None) == (s.get("lat") is None), w, "coordSource와 좌표가 맞지 않음")
         products = s.get("products")
         _check(isinstance(products, list) and len(products) > 0 and set(products) <= set(PRODUCTS), w, "products")
+
+
+def validate_history(doc: dict[str, Any]) -> None:
+    _check(doc.get("schemaVersion") == 1, "history", "schemaVersion은 1")
+    w = f"history {doc.get('product')}_{doc.get('round')}"
+    _check(_int(doc.get("id")), w, "id")
+    _check(doc.get("product") in PRODUCTS, w, "product")
+    _check(_int(doc.get("round")) and doc["round"] > 0, w, "round")
+    _check(bool(_DATETIME.match(str(doc.get("updatedAt")))), w, "updatedAt 형식")
+    entries = doc.get("entries")
+    _check(isinstance(entries, list) and len(entries) > 0, w, "entries가 없음")
+    dates = [e.get("date") for e in entries]
+    _check(all(_DATE.match(str(d)) for d in dates), w, "date 형식")
+    _check(dates == sorted(set(dates)), w, "date는 하루 1건, 오래된 순")
+    for e in entries:
+        _check(e.get("status") in STATUSES, w, "status")
+        _check((e.get("score") is None) or (_num(e["score"]) and 0 <= e["score"] <= 100), w, "score")
+        _check((e.get("score") is not None) == (e["status"] == STATUS_ACTIVE), w, "score는 active일 때만")
+        _check(_int(e.get("stockRate")) and 0 <= e["stockRate"] <= 100, w, "stockRate")
+        _check(_int(e.get("rank1Remaining")) and e["rank1Remaining"] >= 0, w, "rank1Remaining")
+        _check(_int(e.get("rank2Remaining")) and e["rank2Remaining"] >= 0, w, "rank2Remaining")

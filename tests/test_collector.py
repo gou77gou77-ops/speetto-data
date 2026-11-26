@@ -16,8 +16,8 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from collector import check, dhlottery, rounds, stores  # noqa: E402
-from collector.contract import ContractError, validate_rounds, validate_stores  # noqa: E402
+from collector import check, dhlottery, history, rounds, stores, verify  # noqa: E402
+from collector.contract import ContractError, validate_history, validate_rounds, validate_stores  # noqa: E402
 from collector.dhlottery import BlockedError, Client, CollectError, FormatChangedError  # noqa: E402
 from collector.geo import road_address_core, road_key, utmk_to_wgs84, valid_coord, wgs84_to_utmk  # noqa: E402
 from collector.juso import Geocoder  # noqa: E402
@@ -635,6 +635,91 @@ class ContractTest(unittest.TestCase):
             mutate(d)
             with self.assertRaises(ContractError):
                 validate_rounds(d)
+
+
+class HistoryTest(unittest.TestCase):
+    def doc(self, day="2026-11-27", hour="09", **detail_over):
+        r = rounds.build_round(ITEM_70, detail_70(**detail_over))
+        return {"schemaVersion": 1, "generatedAt": f"{day}T{hour}:00:00+09:00", "stockDate": r["stockDate"], "rounds": [r]}
+
+    def entries(self, root):
+        doc = json.loads((Path(root) / "history" / "SP2000_70.json").read_text(encoding="utf-8"))
+        validate_history(doc)
+        return doc["entries"]
+
+    def test_first_run_writes_one_entry_and_url(self):
+        with tempfile.TemporaryDirectory() as d:
+            doc = self.doc()
+            self.assertEqual(history.update(doc, Path(d), log=lambda m: None), (1, 0))
+            self.assertEqual(doc["rounds"][0]["historyUrl"], "history/SP2000_70.json")
+            validate_rounds(doc)
+            self.assertEqual(self.entries(d), [{"date": "2026-11-27", "status": "active", "score": 72.1, "stockRate": 64,
+                                                "rank1Remaining": 4, "rank2Remaining": 14}])
+
+    def test_same_day_overwrites_next_day_appends(self):
+        with tempfile.TemporaryDirectory() as d:
+            history.update(self.doc(hour="09"), Path(d), log=lambda m: None)
+            history.update(self.doc(hour="18", stIvtRnk1Qty=3), Path(d), log=lambda m: None)
+            self.assertEqual([(e["date"], e["rank1Remaining"]) for e in self.entries(d)], [("2026-11-27", 3)])
+            history.update(self.doc(day="2026-11-28", stSpmtRt=70), Path(d), log=lambda m: None)
+            self.assertEqual([(e["date"], e["stockRate"]) for e in self.entries(d)],
+                             [("2026-11-27", 64), ("2026-11-28", 70)])
+
+    def test_ended_within_30_days_is_updated_after_that_frozen(self):
+        ended = dict(ntslStatus="판매종료", stSpmtRt=100, stNtslEndDt="2026-11-01")
+        with tempfile.TemporaryDirectory() as d:
+            # 판매종료 30일째(12/01)까지는 기록한다
+            self.assertEqual(history.update(self.doc(day="2026-12-01", **ended), Path(d), log=lambda m: None), (1, 0))
+            before = (Path(d) / "history" / "SP2000_70.json").read_text(encoding="utf-8")
+            doc = self.doc(day="2026-12-02", **ended)
+            self.assertEqual(history.update(doc, Path(d), log=lambda m: None), (0, 1))
+            self.assertEqual(doc["rounds"][0]["historyUrl"], "history/SP2000_70.json")
+            self.assertEqual((Path(d) / "history" / "SP2000_70.json").read_text(encoding="utf-8"), before)
+
+    def test_frozen_without_file_has_no_url(self):
+        with tempfile.TemporaryDirectory() as d:
+            doc = self.doc(ntslStatus="판매종료", stSpmtRt=100, stNtslEndDt="2026-09-30")
+            history.update(doc, Path(d), log=lambda m: None)
+            self.assertIsNone(doc["rounds"][0]["historyUrl"])
+            self.assertFalse((Path(d) / "history").exists())
+            validate_rounds(doc)
+
+    def test_broken_file_starts_over(self):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "history").mkdir()
+            (Path(d) / "history" / "SP2000_70.json").write_text("{broken", encoding="utf-8")
+            logs = []
+            history.update(self.doc(), Path(d), log=logs.append)
+            self.assertEqual(len(self.entries(d)), 1)
+            self.assertTrue(any("새로 시작" in m for m in logs))
+
+    def test_contract(self):
+        doc = self.doc()
+        doc["rounds"][0]["historyUrl"] = "history/SP1000_70.json"
+        with self.assertRaises(ContractError):
+            validate_rounds(doc)
+        good = {"schemaVersion": 1, "id": 1, "product": "SP500", "round": 1, "updatedAt": "2026-11-27T09:00:00+09:00",
+                "entries": [{"date": "2026-11-27", "status": "active", "score": 50.0, "stockRate": 1,
+                             "rank1Remaining": 1, "rank2Remaining": 1}]}
+        validate_history(good)
+        for mutate in (lambda h: h["entries"].append(dict(h["entries"][0])),            # 같은 날 두 건
+                       lambda h: h["entries"][0].update(status="ended"),                 # ended인데 점수
+                       lambda h: h["entries"].clear()):
+            h = json.loads(json.dumps(good))
+            mutate(h)
+            with self.assertRaises(ContractError):
+                validate_history(h)
+
+    def test_main_writes_history_next_to_out_and_verify_checks_folder(self):
+        with tempfile.TemporaryDirectory() as d:
+            code, out, log = RoundsTest().run_main(d, RoundsTest().routes(), {"total": 1, "stores": [STORE]})
+            self.assertEqual(code, 0, log)
+            self.assertIn("점수 기록: 1개 회차 갱신", log)
+            doc = json.loads(out.read_text(encoding="utf-8"))
+            self.assertEqual(doc["rounds"][0]["historyUrl"], "history/SP2000_70.json")
+            with redirect_stdout(io.StringIO()) as buf:
+                self.assertEqual(verify.main([str(out), str(Path(d) / "history")]), 0)
+            self.assertIn("기록 1건", buf.getvalue())
 
 
 if __name__ == "__main__":

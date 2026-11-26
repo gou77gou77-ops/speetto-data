@@ -9,6 +9,7 @@
 판매중·막바지 회차, 새 회차, 이번에 판매종료로 바뀐 회차만 상세와 1등 배출점을 받는다.
 지난 파일이 없거나 형식 검사를 통과하지 못하면 전부 받는다.
 모든 회차를 받고 형식 검사를 통과했을 때만 파일을 바꾼다.
+끝나면 --out 파일 옆 history/에 회차별 점수 기록을 하루 1건씩 더한다(history.py).
 """
 
 from __future__ import annotations
@@ -20,6 +21,7 @@ import time
 from pathlib import Path
 from typing import Any
 
+from . import history
 from .contract import ContractError, validate_rounds
 from .dhlottery import BlockedError, Client, CollectError, FormatChangedError, user_agent_summary
 from .geo import distance_m, road_key, valid_coord
@@ -312,7 +314,10 @@ def main(argv: list[str] | None = None) -> int:
         gh_error("회차 수집 실패", f"{e}. {out}은 바꾸지 않았습니다")
         return 3
 
+    written, kept = history.update(doc, out.parent, log)
+    validate_rounds(doc)
     write_json_atomic(out, doc)
+    log(f"점수 기록: {written}개 회차 갱신, 판매종료 30일 지난 {kept}개는 그대로 ({out.parent / history.HISTORY_DIR})")
     winners = [w for r in doc["rounds"] for w in r["winners"]]
     log(f"저장: {out} — 회차 {len(doc['rounds'])}개, 1등 배출 {len(winners)}건 "
           f"(판매점 목록에 있음 {sum(w['inStoreList'] for w in winners)}, 없음 {sum(not w['inStoreList'] for w in winners)}, "
