@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-26T21:19:54+09:00",
+ "generatedAt": "2026-11-26T21:50:52+09:00",
  "stockDate": "2026-11-20",
  "rounds": [
   {
@@ -84,7 +84,8 @@
      "lng": 128.53619,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": "history/SP2000_70.json"
   },
   {
    "id": 5785,
@@ -191,7 +192,8 @@
      "lng": 127.01652,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": "history/SP2000_69.json"
   },
   {
    "id": 5156,
@@ -282,7 +284,8 @@
      "lng": 129.01039,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 4714,
@@ -365,7 +368,8 @@
      "lng": 126.649429,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2241,
@@ -448,7 +452,8 @@
      "lng": 127.052907,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2139,
@@ -531,7 +536,8 @@
      "lng": 127.44515,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2050,
@@ -598,7 +604,8 @@
      "lng": 126.7263,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2010,
@@ -681,7 +688,8 @@
      "lng": 127.24925,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1950,
@@ -764,7 +772,8 @@
      "lng": 127.06914,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1890,
@@ -847,7 +856,8 @@
      "lng": 127.06067,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1830,
@@ -930,7 +940,8 @@
      "lng": 126.73084,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1770,
@@ -1013,7 +1024,8 @@
      "lng": 128.628709,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 6424,
@@ -1047,7 +1059,8 @@
    "saleStartDate": "2026-11-20",
    "saleEndDate": "2026-12-31",
    "payEndDate": "2027-12-31",
-   "winners": []
+   "winners": [],
+   "historyUrl": "history/SP1000_112.json"
   },
   {
    "id": 6075,
@@ -1114,7 +1127,8 @@
      "lng": 127.43504,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": "history/SP1000_111.json"
   },
   {
    "id": 5713,
@@ -1245,7 +1259,8 @@
      "lng": 126.4457,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": "history/SP1000_110.json"
   },
   {
    "id": 5726,
@@ -1368,7 +1383,8 @@
      "lng": 127.13471,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": "history/SP1000_109.json"
   },
   {
    "id": 5505,
@@ -1491,7 +1507,8 @@
      "lng": 127.589779,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 5256,
@@ -1614,7 +1631,8 @@
      "lng": 128.20309,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 4682,
@@ -1737,7 +1755,8 @@
      "lng": 126.76821,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 3261,
@@ -1860,7 +1879,8 @@
      "lng": 126.97169,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2133,
@@ -1975,7 +1995,8 @@
      "lng": 127.415663,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2236,
@@ -2098,7 +2119,8 @@
      "lng": 127.30994,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2212,
@@ -2221,7 +2243,8 @@
      "lng": 127.13309,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2070,
@@ -2336,7 +2359,8 @@
      "lng": 126.99724,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2051,
@@ -2451,7 +2475,8 @@
      "lng": 126.523623,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2030,
@@ -2566,7 +2591,8 @@
      "lng": 126.407825,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1990,
@@ -2681,7 +2707,8 @@
      "lng": 126.56372,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1930,
@@ -2796,7 +2823,8 @@
      "lng": 127.160649,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1910,
@@ -2911,7 +2939,8 @@
      "lng": 127.1058,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1870,
@@ -3026,7 +3055,8 @@
      "lng": 127.56668,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1850,
@@ -3133,7 +3163,8 @@
      "lng": 126.59648,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1810,
@@ -3240,7 +3271,8 @@
      "lng": 126.43214,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1790,
@@ -3347,7 +3379,8 @@
      "lng": 127.57973,
      "inStoreList": true
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 1750,
@@ -3454,7 +3487,8 @@
      "lng": 127.71822,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": null
   },
   {
    "id": 2231,
@@ -3505,7 +3539,8 @@
      "lng": 126.786159,
      "inStoreList": false
     }
-   ]
+   ],
+   "historyUrl": "history/SP500_48.json"
   },
   {
    "id": 1970,
@@ -3539,7 +3574,8 @@
    "saleStartDate": "2025-07-11",
    "saleEndDate": "2025-12-31",
    "payEndDate": "2026-12-31",
-   "winners": []
+   "winners": [],
+   "historyUrl": null
   }
  ]
 }

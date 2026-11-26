@@ -1,0 +1,17 @@
+{
+ "schemaVersion": 1,
+ "id": 6075,
+ "product": "SP1000",
+ "round": 111,
+ "updatedAt": "2026-11-26T21:50:52+09:00",
+ "entries": [
+  {
+   "date": "2026-11-26",
+   "status": "active",
+   "score": 68.0,
+   "stockRate": 51,
+   "rank1Remaining": 7,
+   "rank2Remaining": 45
+  }
+ ]
+}

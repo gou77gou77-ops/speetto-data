@@ -1,0 +1,17 @@
+{
+ "schemaVersion": 1,
+ "id": 2231,
+ "product": "SP500",
+ "round": 48,
+ "updatedAt": "2026-11-26T21:50:52+09:00",
+ "entries": [
+  {
+   "date": "2026-11-26",
+   "status": "active",
+   "score": 77.2,
+   "stockRate": 62,
+   "rank1Remaining": 3,
+   "rank2Remaining": 45
+  }
+ ]
+}
