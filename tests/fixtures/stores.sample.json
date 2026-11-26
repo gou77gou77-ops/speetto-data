@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-11-26T09:23:50+09:00",
+ "total": 5,
+ "stores": [
+  {
+   "id": "11100035",
+   "name": "노다지복권방",
+   "address": "서울 서초구 남부순환로356길 26 1층",
+   "tel": "02-3471-9957",
+   "lat": 37.483728,
+   "lng": 127.037843,
+   "coordSource": "dhlottery",
+   "products": [
+    "SP2000",
+    "SP1000"
+   ]
+  },
+  {
+   "id": "11100111",
+   "name": "복권만화",
+   "address": "서울 서초구 사임당로 39 1층 102호",
+   "tel": "02-586-0820",
+   "lat": 37.488378,
+   "lng": 127.014098,
+   "coordSource": "dhlottery",
+   "products": [
+    "SP2000",
+    "SP1000"
+   ]
+  },
+  {
+   "id": "11100424",
+   "name": "행복",
+   "address": "서울 서초구 강남대로30길 63",
+   "tel": "02-529-9090",
+   "lat": 37.482762,
+   "lng": 127.040555,
+   "coordSource": "dhlottery",
+   "products": [
+    "SP2000",
+    "SP1000"
+   ]
+  },
+  {
+   "id": "11100979",
+   "name": "버스충전소",
+   "address": "서울 서초구 동작대로 126 가판",
+   "tel": "02-591-7947",
+   "lat": 37.487746,
+   "lng": 126.98241,
+   "coordSource": "dhlottery",
+   "products": [
+    "SP2000",
+    "SP1000"
+   ]
+  },
+  {
+   "id": "11100981",
+   "name": "가판점",
+   "address": "서울 서초구 효령로 283 가판",
+   "tel": "02-525-5609",
+   "lat": 37.484817,
+   "lng": 127.015017,
+   "coordSource": "dhlottery",
+   "products": [
+    "SP2000",
+    "SP1000"
+   ]
+  }
+ ]
+}
