@@ -1,0 +1,6 @@
+{
+  "tileUrl": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  "tileAttribution": "© OpenStreetMap contributors",
+  "minAppVersion": "1.0.0",
+  "noticeMessage": null
+}
