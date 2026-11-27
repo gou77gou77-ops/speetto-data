@@ -19,7 +19,13 @@ GRADE_NORMAL = "normal"
 GRADE_BAD = "bad"
 GRADE_NOT_RECOMMENDED = "notRecommended"
 
-LOW_STOCK_RATE = 95
+# 입고율이 이 값 이상이면(판매중) 점수를 매기지 않고 막바지(endgame)로 둔다.
+# 남은 발행분이 너무 적어 분모(미판매분)가 작아지고 지수가 폭등하기 때문이다.
+ENDGAME_STOCK_RATE = 95
+LOW_STOCK_RATE = ENDGAME_STOCK_RATE
+# 지수 상한과 점수 환산: 점수 = 100 × (Index − 0.5) / 2.5, 0~100으로 자른다.
+INDEX_CAP = 3.0
+INDEX_FLOOR_FOR_ZERO = 0.5
 
 _UNITS = {
     "억원": 100_000_000,
@@ -75,7 +81,7 @@ class RoundScore:
 
 
 def oracle_index(r: RoundInput) -> float:
-    """Index = R / R0. 입고율 100%면 정의되지 않으므로 호출하면 안 된다."""
+    """Index = R / R0 (상한 없음). 입고율 100%면 정의되지 않으므로 호출하면 안 된다."""
     if r.stock_rate >= 100:
         raise ValueError("입고율 100% 회차는 점수를 계산하지 않습니다")
     top = [r.prize(1), r.prize(2)]
@@ -83,6 +89,12 @@ def oracle_index(r: RoundInput) -> float:
     ratio_now = sum(p.amount * p.remaining for p in top) / unsold
     ratio_launch = sum(p.amount * p.total for p in top) / (r.issued * r.price)
     return ratio_now / ratio_launch
+
+
+def index_to_score(index: float) -> float:
+    """지수(상한 3.0)를 0~100 점수로."""
+    capped = min(index, INDEX_CAP)
+    return min(100.0, max(0.0, 100 * (capped - INDEX_FLOOR_FOR_ZERO) / (INDEX_CAP - INDEX_FLOOR_FOR_ZERO)))
 
 
 def grade_for(score: float) -> str:
@@ -99,20 +111,20 @@ def score_round(r: RoundInput) -> RoundScore:
     """회차 상태, 점수, 라벨을 정한다.
 
     - 판매종료: status=ended, 점수 없음 (추천 목록에서 숨김)
-    - 판매중 + 입고율 100%: status=endgame, 점수 없음 ("막바지 회차" 섹션)
-    - 판매중 + 입고율 100% 미만: status=active, 점수 계산
+    - 판매중 + 입고율 95% 이상: status=endgame, 점수 없음 ("막바지 회차" 섹션)
+    - 판매중 + 입고율 95% 미만: status=active, 지수(상한 3.0)로 점수 계산
     - 1등 잔여 0이면 상태와 상관없이 grade=notRecommended ("구매 비추천")
     """
     rank1_left = r.prize(1).remaining
 
     if not r.on_sale:
         status, index, score = STATUS_ENDED, None, None
-    elif r.stock_rate >= 100:
+    elif r.stock_rate >= ENDGAME_STOCK_RATE:
         status, index, score = STATUS_ENDGAME, None, None
     else:
         status = STATUS_ACTIVE
-        index = oracle_index(r)
-        score = min(100.0, 50 * index)
+        index = min(oracle_index(r), INDEX_CAP)
+        score = index_to_score(index)
 
     if rank1_left == 0:
         grade = GRADE_NOT_RECOMMENDED
@@ -126,5 +138,5 @@ def score_round(r: RoundInput) -> RoundScore:
         index=None if index is None else round(index, 3),
         score=None if score is None else round(score, 1),
         grade=grade,
-        low_stock=status == STATUS_ACTIVE and r.stock_rate >= LOW_STOCK_RATE,
+        low_stock=r.on_sale and r.stock_rate >= LOW_STOCK_RATE,
     )
