@@ -3,7 +3,7 @@
  "id": 5808,
  "product": "SP2000",
  "round": 70,
- "updatedAt": "2026-11-26T21:50:52+09:00",
+ "updatedAt": "2026-11-27T19:31:44+09:00",
  "entries": [
   {
    "date": "2026-11-26",
@@ -11,6 +11,14 @@
    "score": 45.4,
    "stockRate": 64,
    "rank1Remaining": 2,
+   "rank2Remaining": 14
+  },
+  {
+   "date": "2026-11-27",
+   "status": "active",
+   "score": 24.9,
+   "stockRate": 73,
+   "rank1Remaining": 0,
    "rank2Remaining": 14
   }
  ]

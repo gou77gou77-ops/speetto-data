@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-26T21:50:52+09:00",
- "stockDate": "2026-11-20",
+ "generatedAt": "2026-11-27T19:31:44+09:00",
+ "stockDate": "2026-11-27",
  "rounds": [
   {
    "id": 5808,
@@ -9,16 +9,16 @@
    "round": 70,
    "price": 2000,
    "status": "active",
-   "stockRate": 64,
-   "stockDate": "2026-11-20",
+   "stockRate": 73,
+   "stockDate": "2026-11-27",
    "issued": 40000000,
    "prizes": [
     {
      "rank": 1,
      "amount": 1000000000,
      "total": 8,
-     "remaining": 2,
-     "asOf": "2026-11-26"
+     "remaining": 0,
+     "asOf": "2026-11-27"
     },
     {
      "rank": 2,
@@ -28,9 +28,9 @@
      "asOf": "2026-11-11"
     }
    ],
-   "index": 0.908,
-   "score": 45.4,
-   "grade": "normal",
+   "index": 0.499,
+   "score": 24.9,
+   "grade": "notRecommended",
    "lowStock": false,
    "saleStartDate": "2026-09-23",
    "saleEndDate": "2026-12-31",
@@ -53,20 +53,20 @@
      "inStoreList": true
     },
     {
-     "storeId": null,
-     "name": "GS25구미봉산점",
-     "address": "경북 구미시 임봉길 6-1 1층",
-     "lat": 36.106999,
-     "lng": 128.337709,
-     "inStoreList": false
+     "storeId": "14700111",
+     "name": "지에스(GS)25 구미봉산점",
+     "address": "경북 구미시 임봉길 6-1 1층 GS25구미봉산점",
+     "lat": 36.140874,
+     "lng": 128.45474,
+     "inStoreList": true
     },
     {
-     "storeId": null,
-     "name": "GS25구미봉산점",
-     "address": "경북 구미시 임봉길 6-1 1층",
-     "lat": 36.106999,
-     "lng": 128.337709,
-     "inStoreList": false
+     "storeId": "14700111",
+     "name": "지에스(GS)25 구미봉산점",
+     "address": "경북 구미시 임봉길 6-1 1층 GS25구미봉산점",
+     "lat": 36.140874,
+     "lng": 128.45474,
+     "inStoreList": true
     },
     {
      "storeId": "12710129",
@@ -82,6 +82,22 @@
      "address": "대구 달서구 대명천로 220 1층",
      "lat": 35.842204,
      "lng": 128.53619,
+     "inStoreList": true
+    },
+    {
+     "storeId": "72863180",
+     "name": "GS25간석이화점",
+     "address": "인천 남동구 남동대로916번길 40 1층",
+     "lat": 37.463764,
+     "lng": 126.710506,
+     "inStoreList": true
+    },
+    {
+     "storeId": "72863180",
+     "name": "GS25간석이화점",
+     "address": "인천 남동구 남동대로916번길 40 1층",
+     "lat": 37.463764,
+     "lng": 126.710506,
      "inStoreList": true
     }
    ],
@@ -94,7 +110,7 @@
    "price": 2000,
    "status": "active",
    "stockRate": 99,
-   "stockDate": "2026-11-20",
+   "stockDate": "2026-11-27",
    "issued": 50000000,
    "prizes": [
     {
@@ -108,11 +124,11 @@
      "rank": 2,
      "amount": 100000000,
      "total": 30,
-     "remaining": 4,
-     "asOf": "2026-10-20"
+     "remaining": 3,
+     "asOf": "2026-11-23"
     }
    ],
-   "index": 10.769,
+   "index": 10.0,
    "score": 100.0,
    "grade": "strong",
    "lowStock": true,
@@ -1033,8 +1049,8 @@
    "round": 112,
    "price": 1000,
    "status": "active",
-   "stockRate": 0,
-   "stockDate": "2026-11-20",
+   "stockRate": 6,
+   "stockDate": "2026-11-27",
    "issued": 60000000,
    "prizes": [
     {
@@ -1042,18 +1058,18 @@
      "amount": 500000000,
      "total": 12,
      "remaining": 12,
-     "asOf": "2026-11-20"
+     "asOf": "2026-11-27"
     },
     {
      "rank": 2,
      "amount": 20000000,
      "total": 60,
      "remaining": 60,
-     "asOf": "2026-11-20"
+     "asOf": "2026-11-27"
     }
    ],
-   "index": 1.0,
-   "score": 50.0,
+   "index": 1.064,
+   "score": 53.2,
    "grade": "normal",
    "lowStock": false,
    "saleStartDate": "2026-11-20",
@@ -1068,8 +1084,8 @@
    "round": 111,
    "price": 1000,
    "status": "active",
-   "stockRate": 51,
-   "stockDate": "2026-11-20",
+   "stockRate": 65,
+   "stockDate": "2026-11-27",
    "issued": 55000000,
    "prizes": [
     {
@@ -1083,13 +1099,13 @@
      "rank": 2,
      "amount": 20000000,
      "total": 55,
-     "remaining": 45,
-     "asOf": "2026-11-20"
+     "remaining": 42,
+     "asOf": "2026-11-27"
     }
    ],
-   "index": 1.361,
-   "score": 68.0,
-   "grade": "good",
+   "index": 1.879,
+   "score": 93.9,
+   "grade": "strong",
    "lowStock": false,
    "saleStartDate": "2026-10-23",
    "saleEndDate": "2026-12-31",
@@ -1137,7 +1153,7 @@
    "price": 1000,
    "status": "active",
    "stockRate": 92,
-   "stockDate": "2026-11-20",
+   "stockDate": "2026-11-27",
    "issued": 60000000,
    "prizes": [
     {
@@ -1151,12 +1167,12 @@
      "rank": 2,
      "amount": 20000000,
      "total": 60,
-     "remaining": 8,
-     "asOf": "2026-11-20"
+     "remaining": 5,
+     "asOf": "2026-11-27"
     }
    ],
-   "index": 0.278,
-   "score": 13.9,
+   "index": 0.174,
+   "score": 8.7,
    "grade": "notRecommended",
    "lowStock": false,
    "saleStartDate": "2026-08-21",
@@ -3496,8 +3512,8 @@
    "round": 48,
    "price": 500,
    "status": "active",
-   "stockRate": 62,
-   "stockDate": "2026-11-20",
+   "stockRate": 63,
+   "stockDate": "2026-11-27",
    "issued": 20000000,
    "prizes": [
     {
@@ -3512,11 +3528,11 @@
      "amount": 1000000,
      "total": 100,
      "remaining": 45,
-     "asOf": "2026-11-20"
+     "asOf": "2026-11-27"
     }
    ],
-   "index": 1.543,
-   "score": 77.2,
+   "index": 1.585,
+   "score": 79.2,
    "grade": "good",
    "lowStock": false,
    "saleStartDate": "2025-12-29",
