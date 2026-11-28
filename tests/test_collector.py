@@ -441,8 +441,8 @@ class StoresTest(unittest.TestCase):
 class RoundsTest(unittest.TestCase):
     def test_build_round_real_values(self):
         r = rounds.build_round(ITEM_70, detail_70())
-        # 지수 1.442 -> 100 × (1.442 − 0.5) / 2.5 = 37.68
-        self.assertEqual((r["status"], r["score"], r["grade"], r["index"]), ("active", 37.7, "bad", 1.442))
+        # 지수 1.442 -> 50 + 25 × 0.442 = 61.05
+        self.assertEqual((r["status"], r["score"], r["grade"], r["index"]), ("active", 61.1, "good", 1.442))
         self.assertEqual(r["stockDate"], "2026-11-20")
         self.assertEqual([p["asOf"] for p in r["prizes"]], ["2026-11-20", "2026-11-11"])
         self.assertEqual(r["prizes"][0]["amount"], 1_000_000_000)
@@ -654,7 +654,7 @@ class HistoryTest(unittest.TestCase):
             self.assertEqual(history.update(doc, Path(d), log=lambda m: None), (1, 0))
             self.assertEqual(doc["rounds"][0]["historyUrl"], "history/SP2000_70.json")
             validate_rounds(doc)
-            self.assertEqual(self.entries(d), [{"date": "2026-11-27", "status": "active", "score": 37.7, "stockRate": 64,
+            self.assertEqual(self.entries(d), [{"date": "2026-11-27", "status": "active", "score": 61.1, "stockRate": 64,
                                                 "rank1Remaining": 4, "rank2Remaining": 14}])
 
     def test_same_day_overwrites_next_day_appends(self):

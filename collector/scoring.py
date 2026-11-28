@@ -23,9 +23,10 @@ GRADE_NOT_RECOMMENDED = "notRecommended"
 # 남은 발행분이 너무 적어 분모(미판매분)가 작아지고 지수가 폭등하기 때문이다.
 ENDGAME_STOCK_RATE = 95
 LOW_STOCK_RATE = ENDGAME_STOCK_RATE
-# 지수 상한과 점수 환산: 점수 = 100 × (Index − 0.5) / 2.5, 0~100으로 자른다.
+# 지수 상한과 점수 환산(2026-11-28 확정): 지수 1.0(출시 때와 같음)이 50점 "보통".
+#   Index < 1.0 : 점수 = 50 × Index
+#   Index ≥ 1.0 : 점수 = 50 + 25 × (Index − 1), 지수 상한 3.0이라 최대 100점
 INDEX_CAP = 3.0
-INDEX_FLOOR_FOR_ZERO = 0.5
 
 _UNITS = {
     "억원": 100_000_000,
@@ -92,9 +93,11 @@ def oracle_index(r: RoundInput) -> float:
 
 
 def index_to_score(index: float) -> float:
-    """지수(상한 3.0)를 0~100 점수로."""
-    capped = min(index, INDEX_CAP)
-    return min(100.0, max(0.0, 100 * (capped - INDEX_FLOOR_FOR_ZERO) / (INDEX_CAP - INDEX_FLOOR_FOR_ZERO)))
+    """지수(상한 3.0)를 0~100 점수로. 지수 1.0 = 50점."""
+    capped = max(0.0, min(index, INDEX_CAP))
+    if capped < 1.0:
+        return 50 * capped
+    return 50 + 25 * (capped - 1)
 
 
 def grade_for(score: float) -> str:

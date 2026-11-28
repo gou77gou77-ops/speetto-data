@@ -62,20 +62,20 @@ class OracleIndexTest(unittest.TestCase):
         sp2000 = score_round(make_round())
         self.assertEqual(sp2000.status, STATUS_ACTIVE)
         self.assertAlmostEqual(sp2000.index, 1.442, places=3)
-        self.assertEqual(sp2000.score, 37.7)  # 100 × (1.442 − 0.5) / 2.5
-        self.assertEqual(sp2000.grade, GRADE_BAD)
+        self.assertEqual(sp2000.score, 61.1)  # 50 + 25 × (1.442 − 1) = 61.05
+        self.assertEqual(sp2000.grade, GRADE_GOOD)
 
         # 스피또500 48회
         sp500 = score_round(make_round(rate=62, r1=(3, 5), r2=(45, 100),
                                        amounts=(200_000_000, 1_000_000),
                                        issued=20_000_000, price=500))
-        self.assertEqual((sp500.index, sp500.score, sp500.grade), (1.543, 41.7, GRADE_NORMAL))
+        self.assertEqual((sp500.index, sp500.score, sp500.grade), (1.543, 63.6, GRADE_GOOD))
 
     def test_unsold_launch_state_is_index_1(self):
         r = score_round(make_round(rate=0, r1=(12, 12), r2=(60, 60)))
         self.assertEqual(r.index, 1.0)
-        self.assertEqual(r.score, 20.0)
-        self.assertEqual(r.grade, GRADE_BAD)
+        self.assertEqual(r.score, 50.0)  # 출시 때와 같으면 50점 "보통"
+        self.assertEqual(r.grade, GRADE_NORMAL)
 
     def test_index_capped_at_3(self):
         # 출고율 90%에 1·2등이 하나도 안 나갔으면 지수 10 -> 3으로 자르고 100점
@@ -85,12 +85,23 @@ class OracleIndexTest(unittest.TestCase):
         self.assertEqual((r.index, r.score, r.grade), (3.0, 100.0, GRADE_STRONG))
 
     def test_score_formula_and_bounds(self):
-        self.assertEqual(index_to_score(0.3), 0.0)
-        self.assertEqual(index_to_score(0.5), 0.0)
-        self.assertEqual(index_to_score(1.0), 20.0)
-        self.assertEqual(index_to_score(1.75), 50.0)
+        self.assertEqual(index_to_score(0.0), 0.0)
+        self.assertEqual(index_to_score(0.3), 15.0)
+        self.assertEqual(index_to_score(0.8), 40.0)
+        self.assertEqual(index_to_score(1.0), 50.0)
+        self.assertEqual(index_to_score(1.4), 60.0)
+        self.assertEqual(index_to_score(2.2), 80.0)
         self.assertEqual(index_to_score(3.0), 100.0)
         self.assertEqual(index_to_score(10.0), 100.0)
+
+    def test_label_cut_points_in_index(self):
+        # 라벨 구간 80/60/40은 지수 2.2 / 1.4 / 0.8에 해당
+        self.assertEqual(grade_for(index_to_score(2.2)), GRADE_STRONG)
+        self.assertEqual(grade_for(index_to_score(2.19)), GRADE_GOOD)
+        self.assertEqual(grade_for(index_to_score(1.4)), GRADE_GOOD)
+        self.assertEqual(grade_for(index_to_score(1.39)), GRADE_NORMAL)
+        self.assertEqual(grade_for(index_to_score(0.8)), GRADE_NORMAL)
+        self.assertEqual(grade_for(index_to_score(0.79)), GRADE_BAD)
 
     def test_index_refuses_full_stock(self):
         with self.assertRaises(ValueError):
