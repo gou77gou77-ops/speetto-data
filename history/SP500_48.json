@@ -3,7 +3,7 @@
  "id": 2231,
  "product": "SP500",
  "round": 48,
- "updatedAt": "2026-11-28T09:00:18+09:00",
+ "updatedAt": "2026-11-28T09:25:21+09:00",
  "entries": [
   {
    "date": "2026-11-26",
@@ -24,7 +24,7 @@
   {
    "date": "2026-11-28",
    "status": "active",
-   "score": 43.4,
+   "score": 64.6,
    "stockRate": 63,
    "rank1Remaining": 3,
    "rank2Remaining": 45

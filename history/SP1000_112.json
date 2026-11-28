@@ -3,7 +3,7 @@
  "id": 6424,
  "product": "SP1000",
  "round": 112,
- "updatedAt": "2026-11-28T09:00:18+09:00",
+ "updatedAt": "2026-11-28T09:25:21+09:00",
  "entries": [
   {
    "date": "2026-11-26",
@@ -24,7 +24,7 @@
   {
    "date": "2026-11-28",
    "status": "active",
-   "score": 22.6,
+   "score": 51.6,
    "stockRate": 6,
    "rank1Remaining": 12,
    "rank2Remaining": 60
